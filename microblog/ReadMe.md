@@ -109,6 +109,6 @@ $ pip install pyjwt
 
 $ pip install flask-mail
 
-$ pip install flask-bootstrap
+$ pip install flask-moment
 
 $ source venv2/bin/activate
