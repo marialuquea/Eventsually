@@ -7,6 +7,7 @@ from werkzeug.urls import url_parse
 from datetime import datetime
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
 def edit_profile():
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
@@ -77,6 +78,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/user/<username>')
+@login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
@@ -86,6 +88,7 @@ def user(username):
     return render_template('user.html', user=user, posts=posts)
 
 @app.route('/follow/<username>')
+@login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
@@ -100,6 +103,7 @@ def follow(username):
     return redirect(url_for('user', username=username))
 
 @app.route('/unfollow/<username>')
+@login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
