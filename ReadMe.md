@@ -34,6 +34,12 @@ To see database:
 
 >>> db.session.commit()
 
+>>> u = User(username='susan', email='susan@example.com')
+
+>>> db.session.add(u)
+
+>>> db.session.commit()
+
 >>> users = User.query.all()
 
 >>> users
@@ -59,7 +65,7 @@ To see database:
 >>> db.session.add(p)
 >>> db.session.commit()
 
-Get all posts written by a user
+>>> # get all posts written by a user
 >>> u = User.query.get(1)
 >>> u
 <User john>
@@ -74,14 +80,14 @@ Get all posts written by a user
 >>> u.posts.all()
 []
 
-Print post author and body for all posts
+>>> # print post author and body for all posts 
 >>> posts = Post.query.all()
 >>> for p in posts:
 ...     print(p.id, p.author.username, p.body)
 ...
 1 john my first post!
 
-Get all users in reverse alphabetical order
+# get all users in reverse alphabetical order
 >>> User.query.order_by(User.username.desc()).all()
 [<User susan>, <User john>]
 
@@ -94,18 +100,6 @@ Get all users in reverse alphabetical order
 ...     db.session.delete(p)
 ...
 >>> db.session.commit()
-
-Delete users
-
->>> User.query.filter_by(username='maria').delete()
-
->>> db.session.commit()
-
-To check it has been deleted
-
->>> users = User.query.all()
-
->>> users 
 
 --------------------------
 
