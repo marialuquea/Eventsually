@@ -76,7 +76,9 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        image_name = 'profile_pics/' + form.username.data
+        image_file = url_for('static', filename=image_name)
+        user = User(username=form.username.data, email=form.email.data, profilepic=image_name)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
