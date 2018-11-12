@@ -1,4 +1,4 @@
-# Mega Flask Tutorial
+# Events Flask App
 
 To run it:
 
@@ -9,6 +9,18 @@ $ pip install flask-wtf
 $ pip install flask-sqlalchemy
 
 $ pip install flask-migrate
+
+$ pip install flask-login
+
+$ pip install flask-mail
+
+$ pip install flask-moment
+
+export FLASK_APP=main.py
+
+export FLASK_ENV=development
+
+python -m flask run --host-0.0.0.0 --port 9151
 
 ---------------------------------
 
@@ -80,7 +92,7 @@ To see database:
 >>> u.posts.all()
 []
 
->>> # print post author and body for all posts 
+>>> # print post author and body for all posts
 >>> posts = Post.query.all()
 >>> for p in posts:
 ...     print(p.id, p.author.username, p.body)
@@ -100,15 +112,3 @@ To see database:
 ...     db.session.delete(p)
 ...
 >>> db.session.commit()
-
---------------------------
-
-$ pip install flask-login
-
-$ pip install pyjwt
-
-$ pip install flask-mail
-
-$ pip install flask-moment
-
-$ source venv2/bin/activate

@@ -21,6 +21,9 @@ class EditProfileForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+    profilepic = FileField(validators=[
+                            FileRequired(),
+                            FileAllowed(['jpg', 'jpeg', 'png'], 'Only jpg and png!') ])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
