@@ -1,7 +1,11 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
+    {% if title %}
+      {{ title }} - Eventsually
+    {% else %}
+      Welcome to Microblog
+    {% endif %}
 {% endblock %}
 
 {% block navbar %}
@@ -34,7 +38,7 @@
                             {% endif %}
                         </a>
                     </li>
-                    <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">Me</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     {% endif %}
                 </ul>
@@ -53,8 +57,9 @@
         {% endif %}
         {% endwith %}
 
-        {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
+        {% block app_content %}
+        {% endblock %}
+        
     </div>
 {% endblock %}
 
