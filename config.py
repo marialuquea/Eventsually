@@ -7,7 +7,8 @@ class Config(object):
         	'sqlite:///' + os.path.join(basedir, 'app.db')
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	POSTS_PER_PAGE = 10
-	UPLOAD_FOLDER = '/app/static/img/profile_pics'
+	UPLOAD_FOLDER = '/app/static/profile_pics'
+	ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 	ADMINS = ['mluqueanguita@gmail.com']
 	MAIL_SERVER = 'smtp.gmail.com'
     	MAIL_PORT = 587
