@@ -79,9 +79,10 @@ def register():
     if form.validate_on_submit():
         #photo = form.profilepic.data #select photo from form
         file = request.files['profilepic']
-        filename = form.username.data #set photo name to be username
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        user = User(username=form.username.data, email=form.email.data, profilepic=url_for('static', filename='profile_pics/' + image_name))
+        filename = form.username.data + '.jpg' #set photo name to be username
+        # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+	file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
+        user = User(username=form.username.data, email=form.email.data, profilepic=url_for('static', filename='profile_pics/' + filename))
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -93,6 +94,7 @@ def register():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
+    image_file = user.profilepic
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
@@ -101,7 +103,7 @@ def user(username):
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
     return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url, image_file=image_file)
 
 @app.route('/follow/<username>')
 @login_required
