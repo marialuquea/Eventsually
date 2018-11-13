@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, abort
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetP, ResetPasswordForm, PrivateMessages
@@ -104,6 +104,20 @@ def user(username):
         if posts.has_prev else None
     return render_template('user.html', user=user, posts=posts.items,
                            next_url=next_url, prev_url=prev_url, image_file=image_file)
+
+@app.route("/post/<int:post_id>")
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('_post.html', post=post)   
+
+@app.route("/post/<int:post_id>/update")
+@login_required
+def update_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+            abort(403)
+    form = PostForm()
+    return render_template('update_post.html', form=form, post=post)
 
 @app.route('/follow/<username>')
 @login_required
