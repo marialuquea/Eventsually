@@ -76,9 +76,12 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        image_name = 'profile_pics/' + form.username.data
-        image_file = url_for('static', filename=image_name)
-        user = User(username=form.username.data, email=form.email.data, profilepic=image_name)
+        photo = form.profilepic.data #select photo from form
+        filename = form.username.data #set photo name to be username
+        photo.save(os.path.join(
+            app.instance_path, 'app/static/profile_pics', filename
+        )) # save photo in static/profile_pics folder
+        user = User(username=form.username.data, email=form.email.data, profilepic=url_for('static', filename='profile_pics/' + image_name))
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
