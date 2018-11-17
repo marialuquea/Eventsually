@@ -12,7 +12,10 @@
                 said {{ moment(post.timestamp).fromNow() }}:
                 <br>
                 {{ post.body }}
+                <br>
+                {% if current_user %}
+                  <a href="{{ url_for('delete', post_id=post.id) }}">Delete post</a>
+                {% endif %}
             </td>
         </tr>
     </table>
-
