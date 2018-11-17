@@ -117,6 +117,17 @@ def user(username):
     return render_template('user.html', user=user, posts=posts.items,
                            next_url=next_url, prev_url=prev_url, image_file=image_file)
 
+@app.route("/user/delete/<username>", methods=['GET', 'POST'])
+@login_required
+def delete_user(username):
+    user = User.query.filter_by(username=username).first()
+    if user.username != current_user.username:
+        abort(403)
+    db.session.delete(user)
+    db.session.commit()
+    flash('Your user has been deleted!')
+    return redirect(url_for('login'))
+
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
