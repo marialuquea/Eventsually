@@ -8,6 +8,7 @@ from werkzeug.urls import url_parse
 from datetime import datetime
 from app.email import send_password_reset_email
 import os
+from PIL import Image
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -15,7 +16,15 @@ def edit_profile():
     form = EditProfileForm(current_user.username, current_user.email)
     if form.validate_on_submit():
         if form.profilepic.data:
-            profilepic = save_picture(form.profilepic.data)
+            filename = form.username.data + '.jpg'
+            p_path = os.path.join(app.root_path, 'static/profile_pics', filename)
+
+            output_size = (125, 125)
+            i = Image.open(form.profilepic.data)
+            i.thumbnail(output_size)
+            i.save(p_path)
+
+            profilepic = filename
             current_user.profilepic = profilepic
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
@@ -84,7 +93,7 @@ def register():
     if form.validate_on_submit():
         file = request.files['profilepic']
         filename = form.username.data + '.jpg' #set photo name to be username
-	    file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
+	file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
         user = User(username=form.username.data, email=form.email.data, profilepic=url_for('static', filename='profile_pics/' + filename))
         user.set_password(form.password.data)
         db.session.add(user)
@@ -93,24 +102,11 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-def save_picture(form_picture):
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(form_picture.filename)
-    picture_fn = random_hex + f_ext
-    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
-
-    output_size = (125, 125)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
-    i.save(picture_path)
-
-    return picture_fn
-
 @app.route('/user/<username>')
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    image_file = user.profilepic
+    image_file = url_for('static', filename='profile_pics/' + user.profilepic)
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)

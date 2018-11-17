@@ -11,10 +11,10 @@ class EditProfileForm(FlaskForm):
                         validators=[DataRequired(), Email()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=200)])
     profilepic = FileField(validators=[
-                            FileAllowed(['jpg', 'png'], 'Only jpg and png!') ])
+                            FileAllowed(['png'], 'Only png!') ])
     submit = SubmitField('Submit')
 
-    def __init__(self, original_username, original_email *args, **kwargs):
+    def __init__(self, original_username, original_email, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
         self.original_username = original_username
         self.original_email = original_email
@@ -26,7 +26,7 @@ class EditProfileForm(FlaskForm):
                 raise ValidationError('TOO LATE, that username has already been chosen, loser, chose another one!')
 
     def validate_email(self, email):
-        if email.data != original_email:
+        if email.data != self.original_email:
             user = User.query.filter_by(email=self.email.data).first()
             if user:
                 raise ValidationError('That email is taken. Please choose a different one.')
