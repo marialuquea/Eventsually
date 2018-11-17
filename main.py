@@ -12,16 +12,21 @@ import os
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm(current_user.username)
+    form = EditProfileForm(current_user.username, current_user.email)
     if form.validate_on_submit():
+        if form.profilepic.data:
+            profilepic = save_picture(form.profilepic.data)
+            current_user.profilepic = profilepic
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+        current_user.email = form.email.data
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+        form.email.data = current_user.email
     return render_template('edit_profile.html', title='Edit Profile',form=form)
 
 @app.before_request
@@ -77,11 +82,9 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        #photo = form.profilepic.data #select photo from form
         file = request.files['profilepic']
         filename = form.username.data + '.jpg' #set photo name to be username
-        # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-	file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
+	    file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
         user = User(username=form.username.data, email=form.email.data, profilepic=url_for('static', filename='profile_pics/' + filename))
         user.set_password(form.password.data)
         db.session.add(user)
@@ -89,6 +92,19 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
+
+    output_size = (125, 125)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
 
 @app.route('/user/<username>')
 @login_required
@@ -108,7 +124,7 @@ def user(username):
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('_post.html', post=post)   
+    return render_template('_post.html', post=post)
 
 @app.route("/post/<int:post_id>/update")
 @login_required
