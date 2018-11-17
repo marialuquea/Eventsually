@@ -138,7 +138,7 @@ def update_post(post_id):
         form.body.data = post.body
     return render_template('update_post.html', form=form, post=post)
 
-@app.route("/post/<int:post_id>/delete", methods=['POST'])
+@app.route("/post/<int:post_id>/delete", methods=['GET', 'POST'])
 @login_required
 def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
