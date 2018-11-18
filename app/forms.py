@@ -59,7 +59,7 @@ class RegistrationForm(FlaskForm):
 
 class PostForm(FlaskForm):
     title = StringField('Event title', validators=[DataRequired()])
-    date = DateField('Event date dd/mm/yyyy', format='%d-%m-%Y')
+    date = DateField('Event date yyyy-mm-dd', format='%Y-%m-%d')
     time = DateTimeField('Time of the event', format='%H:%M')
     venue = StringField('Where is the event taking place?', validators=[DataRequired()])
     post = TextAreaField('What is the event about?', validators=[DataRequired()])

@@ -9,9 +9,13 @@
                 <a href="{{ url_for('user', username=post.author.username) }}">
                     {{ post.author.username }}
                 </a>
-                said {{ moment(post.timestamp).fromNow() }}:
+                posted {{ moment(post.timestamp).fromNow() }}:
                 <br>
-                {{ post.body }}
+		{{ post.title }} <br>
+                {{ post.date.strftime("%a, %b %d, %Y") }}
+                at {{ post.time.strftime("%H:%M") }} <br>
+                {{ post.venue }} <br>
+                Description: {{ post.body }}
                 <br>
                 {% if post.author.username == current_user.username %}
                   <a href="{{ url_for('delete_post', post_id=post.id) }}">Delete post</a>
