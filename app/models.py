@@ -89,6 +89,10 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(String(25))
+    date = db.Column(db.DateTime)
+    time = db.Column(db.DateTime)
+    venue = db.Column(db.String(70))
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

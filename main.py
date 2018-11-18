@@ -50,10 +50,17 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(
+            title=form.title.data,
+            date=form.date.data,
+            time=form.time.data,
+            venue=form.venue.data,
+            body=form.post.data,
+            author=current_user,
+        )
         db.session.add(post)
         db.session.commit()
-        flash('Your post is now live!')
+        flash('Your event is now live!')
         return redirect(url_for('index'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
