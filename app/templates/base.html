@@ -1,5 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+
 {% block title %}
     {% if title %}
       {{ title }} - Eventsually
@@ -59,7 +61,7 @@
 
         {% block app_content %}
         {% endblock %}
-        
+
     </div>
 {% endblock %}
 
