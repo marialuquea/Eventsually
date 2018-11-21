@@ -17,7 +17,7 @@ LOGIN PAGE
   overflow: hidden;
 }
 
-h1 {
+.section h1 {
   text-align: center;
   font-size: 6rem;
   font-family: "Cookie";
@@ -53,6 +53,16 @@ h1 {
  INDEX.HTML POST EVENT FORM
  */
 
+.title-h1{
+  text-align: left;
+  font-size: 6rem;
+  font-family: "Delius Unicase";
+  padding: 20px;
+  margin: 15px;
+  z-index: 1;
+  opacity: 0.7;
+}
+
 .post-label {
   display: block;
   position: relative;
@@ -76,7 +86,7 @@ h1 {
 .postform {
   width: 60%;
   margin: 60px auto;
-  background: #CCD7E4;
+  background: #CEEAF7;
   padding: 60px 120px 80px 120px;
   text-align: center;
   -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
@@ -113,28 +123,15 @@ h1 {
   top: -3em;
 }
 
-button{
-  height: 38px;
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 38px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 4px;
-  cursor: pointer;
-  box-sizing: border-box;
-  background-color: pink;
-  border: 2px solid pink;
-  font-family: 'Cookie';
-}
-
-button:hover{
-  background-color: transparent;
-  color: black;
-}
-
 .submit {
   display: inline-block;
   padding: 12px 24px;
   transition: ease .3s;
+}
+
+button{
+  background-color: #5BC0DE;
+  color: white;
+  font-family: inherit;
+  border-radius: 4px;
 }
