@@ -17,12 +17,15 @@
   <form class="form" action="" method="POST">
     {{ form.hidden_tag () }}
     <div class="form-group">
-      {{ form.username.label (class="text-white") }}
+      {{ form.username.label () }}
       {{ form.username ( class="form-control", id="username") }}
     </div>
     <div class="form-group">
-      {{ form.password.label (class="text-white") }}
+      {{ form.password.label () }}
       {{ form.password (size=32, class="form-control", id="password", type="password") }}
+    </div>
+    <div class="form-group">
+      {{ form.remember_me () }}
     </div>
     <div class="form-group">
       {{ form.submit (class="btn btn-info btn-md") }}

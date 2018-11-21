@@ -3,7 +3,6 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextA
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
 from flask_wtf.file import FileField, FileRequired, FileAllowed
-from werkzeug.utils import secure_filename
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
