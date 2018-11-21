@@ -132,6 +132,12 @@ LOGIN PAGE
 .button{
   background-color: #5BC0DE;
   color: white;
-  font-family: inherit;
-  border-radius: 4px;
+  font-family: "Delius Unicase";
+  border-radius: 12px;
+  border: 2px solid #5BC0DE;
+  padding: 10px 20px;
+}
+.button:hover{
+  background-color: #5BC0DE;
+  color: #5BC0DE;
 }
