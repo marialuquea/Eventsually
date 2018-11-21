@@ -45,7 +45,7 @@ def before_request():
         db.session.commit()
 
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/postevent', methods=['GET', 'POST'])
 @login_required
 def index():
     form = PostForm()
@@ -197,7 +197,7 @@ def unfollow(username):
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
 
-@app.route('/explore')
+@app.route('/discoverevents')
 @login_required
 def explore():
     page = request.args.get('page', 1, type=int)
