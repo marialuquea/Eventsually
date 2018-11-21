@@ -1,14 +1,16 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+
 
 <style>
   .box {
     width: 500px;
     margin: 200px 0;
-}
+  }
 
-.shape1{
+  .shape1{
     position: relative;
     height: 150px;
     width: 150px;
@@ -16,8 +18,8 @@
     border-radius: 80px;
     float: left;
     margin-right: -50px;
-}
-.shape2 {
+  }
+  .shape2 {
     position: relative;
     height: 150px;
     width: 150px;
@@ -25,8 +27,8 @@
     border-radius: 80px;
     margin-top: -30px;
     float: left;
-}
-.shape3 {
+  }
+  .shape3 {
     position: relative;
     height: 150px;
     width: 150px;
@@ -35,8 +37,8 @@
     margin-top: -30px;
     float: left;
     margin-left: -31px;
-}
-.shape4 {
+  }
+  .shape4 {
     position: relative;
     height: 150px;
     width: 150px;
@@ -45,8 +47,8 @@
     margin-top: -25px;
     float: left;
     margin-left: -32px;
-}
-.shape5 {
+  }
+  .shape5 {
     position: relative;
     height: 150px;
     width: 150px;
@@ -56,8 +58,8 @@
     margin-right: -48px;
     margin-left: -32px;
     margin-top: -30px;
-}
-.shape6 {
+  }
+  .shape6 {
     position: relative;
     height: 150px;
     width: 150px;
@@ -66,8 +68,8 @@
     float: left;
     margin-right: -20px;
     margin-top: -35px;
-}
-.shape7 {
+  }
+  .shape7 {
     position: relative;
     height: 150px;
     width: 150px;
@@ -76,15 +78,51 @@
     float: left;
     margin-right: -20px;
     margin-top: -57px;
-}
-.float {
+  }
+  .float {
     position: absolute;
     z-index: 2;
-}
+  }
 
-.form {
+  .form {
     margin-left: 145px;
-}
+  }
+  .section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .section h1 {
+    text-align: center;
+    font-size: 6rem;
+    font-family: "Cookie";
+    padding: 20px;
+    margin: 15px;
+    z-index: 1;
+    opacity: 0.7;
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: lightblue;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.5;
+  }
 </style>
 
 
@@ -93,56 +131,53 @@
 {% block app_content %}
 
 <div class="container">
-      <div id="login-row" class="row justify-content-center align-items-center">
-          <div id="login-column" class="col-md-6">
-              <div class="box">
-                  <div class="shape1"></div>
-                  <div class="shape2"></div>
-                  <div class="shape3"></div>
-                  <div class="shape4"></div>
-                  <div class="shape5"></div>
-                  <div class="shape6"></div>
-                  <div class="shape7"></div>
-                  <div class="float">
-                      <form class="form" action="" method="POST">
-			{{ form.hidden_tag () }}
-                          <div class="form-group">
-                            {{ form.username.label (class="text-white") }}
-                            {{ form.username ( class="form-control", id="username") }}
-                          </div>
-                          <div class="form-group">
-                            {{ form.password.label (class="text-white") }}
-                            {{ form.password (size=32, class="form-control", id="password", type="password") }}
-                          </div>
-                          <div class="form-group">
-                            {{ form.submit (class="btn btn-info btn-md") }}
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
+  <div id="login-row" class="row justify-content-center align-items-center">
+
+
+    <div class="section">
+
+      <h1>Sign In</h1>
+
+      <div class="video-container">
+        <div class="color-overlay"></div>
+        <video autoplay loop muted>
+          <source src="video.mp4" type="video/mp4">
+        </video>
       </div>
+        <div id="login-column" class="col-md-6">
+          <div class="box">
+            <div class="shape1"></div>
+            <div class="shape2"></div>
+            <div class="shape3"></div>
+            <div class="shape4"></div>
+            <div class="shape5"></div>
+            <div class="shape6"></div>
+            <div class="shape7"></div>
+
+            <div class="float">
+              <form class="form" action="" method="POST">
+                {{ form.hidden_tag () }}
+                <div class="form-group">
+                  {{ form.username.label (class="text-white") }}
+                  {{ form.username ( class="form-control", id="username") }}
+                </div>
+                <div class="form-group">
+                  {{ form.password.label (class="text-white") }}
+                  {{ form.password (size=32, class="form-control", id="password", type="password") }}
+                </div>
+                <div class="form-group">
+                  {{ form.submit (class="btn btn-info btn-md") }}
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
   </div>
 
 
-
-<!--
-    <h1>Sign In</h1>
-    <div class="row">
-        <div class="col-md-4">
-          <form class="" action="" method="post">
-            <div class="col-sm-10">
-              <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-            {{ form.username.label (class="")}}
-          </form>
-            {{ wtf.quick_form(form) }}
-        </div>
-    </div>
-    <br>
-    <p><a href="{{ url_for('register') }}">Wanna join Eventsually? Register for free!</a></p>
-    <p><a href="{{ url_for('reset_password_request') }}">I forgot my password...</a>
-    </p>
--->
-{% endblock %}
-
+  {% endblock %}
