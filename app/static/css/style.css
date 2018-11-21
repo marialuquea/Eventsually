@@ -145,3 +145,14 @@ textarea{
   background-color: transparent;
   color: #5BC0DE;
 }
+
+/*
+ POST CSS
+*/
+
+.event-month{
+  color: #5BC0DE;
+}
+.event-day{
+  font-size: 20px;
+}
