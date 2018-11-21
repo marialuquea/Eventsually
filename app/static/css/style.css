@@ -17,7 +17,7 @@ LOGIN PAGE
   overflow: hidden;
 }
 
-.section h1 {
+h1 {
   text-align: center;
   font-size: 6rem;
   font-family: "Cookie";
@@ -44,7 +44,7 @@ LOGIN PAGE
   opacity: 0.5;
 }
 
-body{
+.back-form{
   background-color: #CEEAF7;
   margin: 0;
 }
@@ -103,7 +103,7 @@ body{
   top: -1.6em;
   padding: 10px;
   font-family: "Delius Unicase";
-  font-size: 2em;
+  font-size: 1.2em;
   letter-spacing: 1px;
   color: #5BC0DE;
   transition: ease .3s;

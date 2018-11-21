@@ -14,7 +14,7 @@
   {% if form %}
     <h1>Post your event, {{ current_user.username }}!</h1>
 
-    <form class="postform" action="" method="POST">
+    <form class="postform back-form" action="" method="POST">
       {{ form.hidden_tag () }}
       <label class="post-label">
         {{ form.title.label (class="label-txt") }}
