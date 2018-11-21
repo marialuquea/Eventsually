@@ -129,7 +129,7 @@ LOGIN PAGE
   transition: ease .3s;
 }
 
-button{
+.button{
   background-color: #5BC0DE;
   color: white;
   font-family: inherit;
