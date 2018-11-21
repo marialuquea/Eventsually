@@ -1,6 +1,12 @@
 {% extends 'bootstrap/base.html' %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+<head>
+  <link href="//bootswatch.com/4/minty/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="//bootswatch.com/4/minty/bootstrap.css" id="bootstrap-css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+
+
 
 {% block title %}
     {% if title %}
