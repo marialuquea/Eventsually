@@ -118,8 +118,8 @@ button{
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  background-color: #2FA4BF;
-  border: 2px solid #2FA4BF;
+  background-color: pink;
+  border: 2px solid pink;
   font-family: 'Cookie';
 }
 
