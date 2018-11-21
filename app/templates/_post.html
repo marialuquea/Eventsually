@@ -1,13 +1,8 @@
-<head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
-</head>
-
-
 <table class="table table-hover">
         <tr>
             <td width="70px">
-                {{ post.date.strftime("%b") }} <br>
-                {{ post.date.strftime("%d") }}
+                {{ post.date.strftime("%b") (class="event-month") }} <br>
+                {{ post.date.strftime("%d") (class="event-day") }}
             </td>
             <td>
                 {{ post.title }}
