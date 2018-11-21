@@ -12,9 +12,22 @@
 
 <div class="section">
 
-  <h1>Eventsually</h1>
-  <br>
   <h1>Sign In</h1>
+
+  <form class="form" action="" method="POST">
+    {{ form.hidden_tag () }}
+    <div class="form-group">
+      {{ form.username.label (class="text-white") }}
+      {{ form.username ( class="form-control", id="username") }}
+    </div>
+    <div class="form-group">
+      {{ form.password.label (class="text-white") }}
+      {{ form.password (size=32, class="form-control", id="password", type="password") }}
+    </div>
+    <div class="form-group">
+      {{ form.submit (class="btn btn-info btn-md") }}
+    </div>
+  </form>
 
   <div class="video-container">
     <div class="color-overlay"></div>
@@ -22,21 +35,6 @@
       <source src="{{ url_for('static', filename="video.mp4") }}" type="video/mp4">
     </video>
   </div>
-
-    <form class="form" action="" method="POST">
-      {{ form.hidden_tag () }}
-      <div class="form-group">
-        {{ form.username.label (class="text-white") }}
-        {{ form.username ( class="form-control", id="username") }}
-      </div>
-      <div class="form-group">
-        {{ form.password.label (class="text-white") }}
-        {{ form.password (size=32, class="form-control", id="password", type="password") }}
-      </div>
-      <div class="form-group">
-        {{ form.submit (class="btn btn-info btn-md") }}
-      </div>
-    </form>
 
   </div>
 
