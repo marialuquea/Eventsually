@@ -1,4 +1,6 @@
-
+/*
+LOGIN PAGE
+*/
 .form {
   margin-left: 145px;
   z-index: 1;
@@ -42,7 +44,10 @@
   opacity: 0.5;
 }
 
-/* INDEX.HTML POST EVENT FORM  */
+/*
+ INDEX.HTML POST EVENT FORM
+ */
+
 .post-label {
   display: block;
   position: relative;
@@ -103,20 +108,28 @@
   top: -3em;
 }
 
+button{
+  height: 38px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 38px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: #2FA4BF;
+  border: 2px solid #2FA4BF;
+  font-family: 'Cookie';
+}
+
+button:hover{
+  background-color: transparent;
+  color: black;
+}
+
 .submit {
   display: inline-block;
   padding: 12px 24px;
-  background: rgb(220,220,220);
-  font-weight: bold;
-  color: rgb(120,120,120);
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  cursor: pointer;
   transition: ease .3s;
-}
-
-.submit:hover {
-  background: #8BC34A;
-  color: #ffffff;
 }
