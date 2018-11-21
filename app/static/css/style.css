@@ -1,6 +1,9 @@
 
 .form {
   margin-left: 145px;
+  z-index: 1;
+  font-family: "Cookie";
+  font-size: 2rem;
 }
 .section {
   position: relative;
