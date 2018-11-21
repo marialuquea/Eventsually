@@ -12,7 +12,7 @@
 
     <form class="postform" action="" method="post">
       {{ form.hidden_tag () }}
-      <label>
+      <label class="post-label">
         {{ form.title.label (class="label-txt") }}
         {{ form.title (class="input") }}
         <div class="line-box">
@@ -20,7 +20,7 @@
         </div>
       </label>
 
-      <label>
+      <label class="post-label">
         {{ form.date.label (class="label-txt") }}
         {{ form.date (class="input") }}
         <div class="line-box">
@@ -28,7 +28,7 @@
         </div>
       </label>
 
-      <label>
+      <label class="post-label">
         {{ form.time.label (class="label-txt") }}
         {{ form.time (class="input") }}
         <div class="line-box">
@@ -36,7 +36,7 @@
         </div>
       </label>
 
-      <label>
+      <label class="post-label">
         {{ form.venue.label (class="label-txt") }}
         {{ form.venue (class="input") }}
         <div class="line-box">
@@ -44,7 +44,7 @@
         </div>
       </label>
 
-      <label>
+      <label class="post-label">
         {{ form.post.label (class="label-txt") }}
         {{ form.post (class="input") }}
         <div class="line-box">
@@ -52,7 +52,7 @@
         </div>
       </label>
 
-      <label>
+      <label class="post-label">
         {{ form.submit (class="submit") }}
       </label>
 

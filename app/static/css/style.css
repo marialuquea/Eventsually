@@ -43,7 +43,7 @@
 }
 
 /* INDEX.HTML POST EVENT FORM  */
-label {
+.post-label {
   display: block;
   position: relative;
   margin: 40px 0px;
