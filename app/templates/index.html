@@ -15,7 +15,7 @@
   {% if form %}
     <h1 class="title-h1">Post your event, {{ current_user.username }}!</h1>
 
-    <form class="postform back-form" action="" method="POST">
+    <form class="postform back-form" action="" method="POST" enctype="multipart/form-data">
       {{ form.hidden_tag () }}
       {{ form.csrf_token }}
       <label class="post-label">
@@ -60,7 +60,7 @@
 
       <label class="post-label">
         {{ form.eventphoto.label (class="label-txt") }}
-        {{ form.eventphoto () }}
+        {{ form.eventphoto }}
         <div class="line-box">
           <div class="line"></div>
         </div>
