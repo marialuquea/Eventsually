@@ -17,6 +17,7 @@
 
     <form class="postform back-form" action="" method="POST">
       {{ form.hidden_tag () }}
+      {{ form.csrf_token }}
       <label class="post-label">
         {{ form.title.label (class="label-txt") }}
         {{ form.title (class="input") }}
