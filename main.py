@@ -266,6 +266,17 @@ def messages():
     return render_template('messages.html', messages=messages.items,
                            next_url=next_url, prev_url=prev_url)
 
+@app.route("/messages/delete/<message>", methods=['GET', 'POST'])
+@login_required
+def delete_message(message):
+    message = Message.query.filter_by(id=message).first()
+    if !current_user.is_authenticated:
+        abort(403)
+    db.session.delete(message)
+    db.session.commit()
+    flash('Your message has been deleted!')
+    return redirect(url_for('messages'))
+
 @app.route('/notifications')
 @login_required
 def notifications():
