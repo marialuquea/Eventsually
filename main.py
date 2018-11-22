@@ -48,30 +48,23 @@ def before_request():
 @login_required
 def index():
     form = PostForm()
-    print ('0')
-    if not form.validate_on_submit():
-        flash (form.errors)
     if form.validate_on_submit():
-        print ('1')
         eventphoto = request.files['eventphoto']
         photoname = form.title.data + '.png'
         eventphoto.save(os.path.join(app.root_path, 'static/event_pics/', photoname))
         print ('hello')
         post = Post(
             title=form.title.data,
-            eventphoto=url_for('static', filename='event_pics' + photoname),
+            eventphoto=url_for('static', filename='event_pics/' + photoname),
             date=form.date.data,
             time=form.time.data,
             venue=form.venue.data,
             body=form.post.data,
             author=current_user,
         )
-        print ('hello2')
         db.session.add(post)
-        print ('hello3')
         db.session.commit()
-        flash('Your event is now live!')
-        print ('hello4')
+        flash('Your event has been posted :)')
         return redirect(url_for('explore'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
