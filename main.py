@@ -10,6 +10,15 @@ from app.email import send_password_reset_email
 import os
 from PIL import Image
 
+@app.route('/interested/<user_id>/<post_id>')
+@login_required
+def interested(post_id, user_id):
+    post = Post.query.get(post_id)
+    item = UserList(
+        user_id=user_id,
+        event_interested=post)
+    db.session.add(item)
+
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
