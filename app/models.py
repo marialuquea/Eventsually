@@ -47,10 +47,6 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def avatar(self, size):
-        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
-
     def follow(self, user):
         if not self.is_following(user):
             self.followed.append(user)
@@ -96,7 +92,8 @@ class User(UserMixin, db.Model):
 class UserList(db.Model):
     __tablename__ = "userlist"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    user_id = db.Column(db.Integer)
 
     def __repr__(self):
         return '<Userlist {}>'.format(self.id)

@@ -23,7 +23,7 @@
                 {% if post.author.username == current_user.username %}
                   <a href="{{ url_for('delete_post', post_id=post.id) }}">Delete post</a>
                 {% endif %}
-
+                <br>
                 <a href="{{ url_for('interested', post_id=post.id, user_id=current_user.id) }}">Interested</a>
 
             </td>

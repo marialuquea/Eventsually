@@ -15,9 +15,11 @@ from PIL import Image
 def interested(post_id, user_id):
     post = Post.query.get(post_id)
     item = UserList(
+        post_id=post_id,
         user_id=user_id,
         event_interested=post)
     db.session.add(item)
+    db.session.commit()
     flash('You are interested in this event')
     return redirect(url_for('explore'))
 
