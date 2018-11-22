@@ -44,7 +44,6 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/postevent', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -197,6 +196,7 @@ def unfollow(username):
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
 
+@app.route('/')
 @app.route('/discoverevents')
 @login_required
 def explore():
