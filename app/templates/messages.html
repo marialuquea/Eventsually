@@ -6,7 +6,7 @@
         {{ message.title }} <br>
         Sender: {{ message.sender_id }} <br>
         Message: {{ message.body }} <br>
-        {{ moment(post.timestamp).fromNow() }}
+        {{ moment(message.timestamp).fromNow() }}
     {% endfor %}
 
 <nav aria-label="...">
