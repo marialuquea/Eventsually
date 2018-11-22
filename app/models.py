@@ -98,9 +98,9 @@ class Post(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = relationship('User', foreign_keys='Post.user_id')
+    user = relationship("User", foreign_keys=[user_id])
     interested_user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    interested_user = relationship('User', foreign_keys='Post.interested_user_id')
+    interested_user = relationship("User", foreign_keys=[interested_user_id])
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
