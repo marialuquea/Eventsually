@@ -35,12 +35,7 @@
     {% for post in postList %}
       {% include '_post.html' %}
     {% endfor %}
-
-    <!--
-    {% for post in interested_events %}
-        {% include '_post.html' %}
-    {% endfor %}
-    -->
+    
     <nav aria-label="...">
         <ul class="pager">
             <li class="previous{% if not prev_url %} disabled{% endif %}">

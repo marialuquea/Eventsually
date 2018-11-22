@@ -13,15 +13,19 @@ from PIL import Image
 @app.route('/interested/<user_id>/<post_id>')
 @login_required
 def interested(post_id, user_id):
-    post = Post.query.get(post_id)
-    item = UserList(
-        post_id=post_id,
-        user_id=user_id,
-        event_interested=post)
-    db.session.add(item)
-    db.session.commit()
-    flash('You are interested in this event')
-    return redirect(url_for('explore'))
+    if UserList.query.filter_by(user_id=user_id).filter_by(post_id=post_id) is None:
+        post = Post.query.get(post_id)
+        item = UserList(
+            post_id=post_id,
+            user_id=user_id,
+            event_interested=post)
+        db.session.add(item)
+        db.session.commit()
+        flash('You are interested in this event')
+        return redirect(url_for('explore'))
+    else:
+        flash('You are already interest in this event')
+        return redirect(url_for('user'))
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -131,7 +135,6 @@ def user(username):
     for relation in (UserList.query.filter_by(user_id=user.id)):
         new_post = Post.query.get(relation.post_id)
         postList.append(new_post)
-    print(postList)
     next_url = url_for('user', username=user.username, page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
