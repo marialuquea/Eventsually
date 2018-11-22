@@ -96,7 +96,7 @@ class User(UserMixin, db.Model):
 class UserList(db.Model):
     __tablename__ = "userlist"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(25))
+    user_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
 class Post(db.Model):
     __tablename__ = 'post'
