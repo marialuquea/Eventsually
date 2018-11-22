@@ -49,6 +49,8 @@ def before_request():
 def index():
     form = PostForm()
     print ('0')
+    if not form.validate_on_submit():
+        print ('not valid')
     if form.validate_on_submit():
         print ('1')
         eventphoto = request.files['eventphoto']
