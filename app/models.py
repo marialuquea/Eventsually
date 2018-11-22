@@ -90,6 +90,7 @@ class User(UserMixin, db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(25))
+    eventphoto = profilepic = db.Column(db.String(50))
     date = db.Column(db.DateTime)
     time = db.Column(db.DateTime)
     venue = db.Column(db.String(70))
