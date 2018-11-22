@@ -17,7 +17,8 @@
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-default">
+
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -28,10 +29,10 @@
                 </button>
                 <a class="navbar-brand" href="{{ url_for('index') }}">Eventsually</a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('index') }}">Post event</a></li>
-                    <li><a href="{{ url_for('explore') }}">Discover new events</a></li>
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-link"><a href="{{ url_for('index') }}">Post event</a></li>
+                    <li class="nav-link"><a href="{{ url_for('explore') }}">Discover new events</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
@@ -56,11 +57,11 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
+            <div>{{ message }}</div>
             {% endfor %}
         {% endif %}
         {% endwith %}
