@@ -18,6 +18,8 @@ def interested(post_id, user_id):
         user_id=user_id,
         event_interested=post)
     db.session.add(item)
+    flash('You are interested in this event')
+    return redirect(url_for('explore'))
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
