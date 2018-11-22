@@ -6,13 +6,6 @@ from hashlib import md5
 from time import time
 import jwt
 import json
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship, scoped_session, sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-
-engine = create_engine(u'sqlite:///:memory:', echo=True)
-session = scoped_session(sessionmaker(bind=engine))
-Base = declarative_base()
 
 followers = db.Table(
     'followers',
@@ -28,7 +21,6 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     profilepic = db.Column(db.String(50))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-    interested_events = db.relationship('Post', backref='interested_post_id', lazy='dynamic')
     about_me = db.Column(db.String(200))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
@@ -107,9 +99,6 @@ class Post(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship("User", foreign_keys=[user_id])
-    interested_user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    interested_user = db.relationship("User", foreign_keys=[interested_user_id])
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
@@ -137,5 +126,3 @@ class Notification(db.Model):
 
     def get_data(self):
         return json.loads(str(self.payload_json))
-
-Base.metadata.create_all()

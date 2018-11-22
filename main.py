@@ -121,7 +121,6 @@ def user(username):
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
     return render_template('user.html', user=user, posts=posts.items,
-                           interested_events=interested_events.items,
                            next_url=next_url, prev_url=prev_url, image_file=image_file)
 
 @app.route("/user/delete/<username>", methods=['GET', 'POST'])
@@ -139,11 +138,11 @@ def delete_user(username):
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('_post.html', post=post)
-
+'''
 def interested(post_id):
     post = Post.query.get_or_404(post_id)
     post.interested_user_id = current_user
-
+'''
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
