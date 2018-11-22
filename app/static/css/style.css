@@ -58,6 +58,34 @@ textarea{
 }
 
 /*
+NAVBAR
+*/
+.nav{
+  height: 70px;
+  background: #BFD8D2;
+}
+.nav ul{
+  margin: 0;
+  list-style: none;
+}
+.nav li{
+  font-family: 'Delius Unicase';
+  font-size: 25px;
+  float: left;
+  width: 20%;
+}
+.nav a {
+  padding: 19px 10px;
+  text-decoration: none;
+  display: inline-block;
+  color: grey;
+}
+.nav a:hover{
+  background-color: #75A8B3;
+  color: white;
+}
+
+/*
  INDEX.HTML POST EVENT FORM
  */
 
