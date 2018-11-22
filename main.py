@@ -48,7 +48,9 @@ def before_request():
 @login_required
 def index():
     form = PostForm()
+    print ('0')
     if form.validate_on_submit():
+        print ('1')
         eventphoto = request.files['eventphoto']
         photoname = form.title.data + '.png'
         file.save(os.path.join(app.root_path, 'static/event_pics', photoname))
