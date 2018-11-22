@@ -13,6 +13,7 @@ elasticsearch==6.3.1
 Flask==1.0.2
 Flask-Bcrypt==0.7.1
 Flask-Bootstrap==3.3.7.1
+Flask-Datepicker==0.12
 Flask-Login==0.4.1
 Flask-Mail==0.9.1
 Flask-Migrate==2.3.0
@@ -43,6 +44,7 @@ scandir==1.9.0
 secret==0.8
 six==1.11.0
 SQLAlchemy==1.2.13
+static-parameters==0.4
 tabulate==0.8.2
 trollius==2.2
 urllib3==1.24.1
