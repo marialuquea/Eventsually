@@ -52,6 +52,7 @@ def index():
         eventphoto = request.files['eventphoto']
         photoname = form.title.data + '.png'
         file.save(os.path.join(app.root_path, 'static/event_pics', photoname))
+        print ('hello')
         post = Post(
             title=form.title.data,
             eventphoto=url_for('static', filename='event_pics' + photoname),
@@ -61,9 +62,12 @@ def index():
             body=form.post.data,
             author=current_user,
         )
+        print ('hello2')
         db.session.add(post)
+        print ('hello3')
         db.session.commit()
         flash('Your event is now live!')
+        print ('hello4')
         return redirect(url_for('explore'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
