@@ -16,7 +16,7 @@ def edit_profile():
     form = EditProfileForm(current_user.username, current_user.email)
     if form.validate_on_submit():
         if form.profilepic.data:
-            filename = form.username.data + '.jpg'
+            filename = form.username.data + '.png'
             p_path = os.path.join(app.root_path, 'static/profile_pics', filename)
 
             output_size = (125, 125)
@@ -50,7 +50,7 @@ def index():
     form = PostForm()
     if form.validate_on_submit():
         eventphoto = request.files['eventphoto']
-        photoname = form.title.data + '.jpg'
+        photoname = form.title.data + '.png'
         file.save(os.path.join(app.root_path, 'static/event_pics', photoname))
         post = Post(
             title=form.title.data,
@@ -102,7 +102,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         file = request.files['profilepic']
-        filename = form.username.data + '.jpg' #set photo name to be username
+        filename = form.username.data + '.png' #set photo name to be username
 	file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
         user = User(username=form.username.data, email=form.email.data, profilepic=url_for('static', filename='profile_pics/' + filename))
         user.set_password(form.password.data)
