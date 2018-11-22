@@ -98,6 +98,9 @@ class UserList(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
+    def __repr__(self):
+        return '<Userlist {}>'.format(self.id)
+
 class Post(db.Model):
     __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key=True)

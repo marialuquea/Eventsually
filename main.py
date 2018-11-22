@@ -147,11 +147,7 @@ def delete_user(username):
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('_post.html', post=post)
-'''
-def interested(post_id):
-    post = Post.query.get_or_404(post_id)
-    post.interested_user_id = current_user
-'''
+
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
