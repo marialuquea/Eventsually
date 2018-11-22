@@ -51,7 +51,7 @@ def index():
     if form.validate_on_submit():
         eventphoto = request.files['eventphoto']
         photoname = form.title.data + '.jpg'
-        file.save(os.path.join(app.root_path, 'static/event_pics', photoname)
+        file.save(os.path.join(app.root_path, 'static/event_pics', photoname))
         post = Post(
             title=form.title.data,
             eventphoto=url_for('static', filename='event_pics' + photoname),
