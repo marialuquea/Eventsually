@@ -6,11 +6,22 @@ from hashlib import md5
 from time import time
 import jwt
 import json
+from sqlalchemy import Table, Column, Integer, ForeignKey
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 followers = db.Table(
     'followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+)
+
+association_table = db.Table(
+    'association', Base.metadata,
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('post_id', db.Integer, db.ForeignKey('post.id'))
 )
 
 class User(UserMixin, db.Model):
@@ -21,6 +32,10 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     profilepic = db.Column(db.String(50))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    interested_events = db.relationship(
+        'Post',
+        secondary=association_table,
+        back_populates="interested_users")
     about_me = db.Column(db.String(200))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
@@ -99,6 +114,11 @@ class Post(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    interested_users = db.relationship(
+        "User",
+        secondary=association_table,
+        back_populates="interested_events"
+    )
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
