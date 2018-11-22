@@ -15,14 +15,10 @@ from PIL import Image
 def edit_profile():
     form = EditProfileForm(current_user.username, current_user.email)
     if form.validate_on_submit():
-        if form.profilepic.data:
-            filename = form.username.data + '.png'
-            p_path = os.path.join(app.root_path, 'static/profile_pics', filename)
-            output_size = (125, 125)
-            i = Image.open(form.profilepic.data)
-            i.thumbnail(output_size)
-            i.save(p_path)
-            current_user.profilepic = url_for('static', filename='profile_pics/' + filename)
+        file = request.files['profilepic']
+        filename = form.username.data + '.png'
+        file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
+        current_user.profilepic = url_for('static', filename='profile_pics/' + filename)
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         current_user.email = form.email.data
