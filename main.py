@@ -49,12 +49,12 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        eventphoto = request.files['eventphoto']
-        photoname = form.title.data + '.png'
-        file.save(os.path.join(app.root_path, 'static/event_pics', photoname))
+        file = request.files['eventphoto']
+        filename = form.title.data + '.jpg'
+        file.save(os.path.join(app.root_path, 'static/event_pics', filename))
         post = Post(
             title=form.title.data,
-            eventphoto=url_for('static', filename='event_pics/' + photoname),
+            eventphoto=url_for('static', filename='event_pics/' + filename),
             date=form.date.data,
             time=form.time.data,
             venue=form.venue.data,
