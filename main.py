@@ -55,7 +55,7 @@ def index():
         print ('1')
         eventphoto = request.files['eventphoto']
         photoname = form.title.data + '.png'
-        eventphoto.save(os.path.join(app.root_path, 'static/event_pics', photoname))
+        eventphoto.save(os.path.join(app.root_path, 'static/event_pics/', photoname))
         print ('hello')
         post = Post(
             title=form.title.data,
