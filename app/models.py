@@ -6,14 +6,13 @@ from hashlib import md5
 from time import time
 import jwt
 import json
-from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship, scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
 
-engine = create_engine('sqlite://', echo=True)
-Base = declarative_base(bind=engine)
-Session = sessionmaker(bind=engine)
+engine = create_engine(u'sqlite:///:memory:', echo=True)
+session = scoped_session(sessionmaker(bind=engine))
+Base = declarative_base()
 
 followers = db.Table(
     'followers',
@@ -22,6 +21,7 @@ followers = db.Table(
 )
 
 class User(UserMixin, db.Model):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
@@ -97,6 +97,7 @@ class User(UserMixin, db.Model):
         return n
 
 class Post(db.Model):
+    __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(25))
     eventphoto = db.Column(db.String(50))
