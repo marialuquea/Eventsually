@@ -114,11 +114,14 @@ def user(username):
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
+    interested_events = user.interested_events.order_by(Post.date.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('user', username=user.username, page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
     return render_template('user.html', user=user, posts=posts.items,
+                           interested_events=interested_events.items,
                            next_url=next_url, prev_url=prev_url, image_file=image_file)
 
 @app.route("/user/delete/<username>", methods=['GET', 'POST'])
@@ -136,6 +139,10 @@ def delete_user(username):
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('_post.html', post=post)
+
+def interested(post_id):
+    post = Post.query.get_or_404(post_id)
+    post.interested_user_id = current_user
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required

@@ -26,7 +26,12 @@
             </td>
         </tr>
     </table>
+    <h1>My events</h1>
     {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+    <h1>Events I will be attending (and getting super drunk at):</h1>
+    {% for post in interested_events %}
         {% include '_post.html' %}
     {% endfor %}
     <nav aria-label="...">
@@ -43,4 +48,5 @@
             </li>
         </ul>
     </nav>
+
 {% endblock %}
