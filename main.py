@@ -13,7 +13,21 @@ from PIL import Image
 @app.route('/interested/<user_id>/<post_id>')
 @login_required
 def interested(post_id, user_id):
-    if UserList.query.filter_by(post_id=post_id).filter_by(user_id=user_id)[0] is None:
+    try:
+        if UserList.query.filter_by(post_id=post_id).filter_by(user_id=user_id)[0] is None:
+            post = Post.query.get(post_id)
+            item = UserList(
+            post_id=post_id,
+            user_id=user_id,
+            event_interested=post)
+            db.session.add(item)
+            db.session.commit()
+            flash('You are interested in this event')
+            return redirect(url_for('explore'))
+        else:
+            flash('You are already interested in this event')
+            return redirect(url_for('explore'))
+    except:
         post = Post.query.get(post_id)
         item = UserList(
         post_id=post_id,
@@ -23,10 +37,7 @@ def interested(post_id, user_id):
         db.session.commit()
         flash('You are interested in this event')
         return redirect(url_for('explore'))
-    else:
-        flash('You are already interested in this event')
-        return redirect(url_for('explore'))
-
+        
 @app.route('/notinterested/<user_id>/<post_id>')
 @login_required
 def not_interested(post_id, user_id):
