@@ -25,7 +25,7 @@ def interested(post_id, user_id):
         return redirect(url_for('explore'))
     else:
         flash('You are already interest in this event')
-        return redirect(url_for('user'))
+        return redirect(url_for('explore'))
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
