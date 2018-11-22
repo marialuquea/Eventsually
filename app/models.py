@@ -18,12 +18,6 @@ followers = db.Table(
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
-association_table = db.Table(
-    'association', Base.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('post_id', db.Integer, db.ForeignKey('post.id'))
-)
-
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
@@ -32,10 +26,6 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     profilepic = db.Column(db.String(50))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-    interested_events = db.relationship(
-        'Post',
-        secondary=association_table,
-        back_populates="interested_users")
     about_me = db.Column(db.String(200))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
@@ -103,6 +93,11 @@ class User(UserMixin, db.Model):
         db.session.add(n)
         return n
 
+class UserList(db.Model):
+    __tablename__ = "userlist"
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.String(25))
+
 class Post(db.Model):
     __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key=True)
@@ -114,11 +109,7 @@ class Post(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    interested_users = db.relationship(
-        "User",
-        secondary=association_table,
-        back_populates="interested_events"
-    )
+    userlist = db.relationship('UserList', backref='user_interested', lazy='dynamic')
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
