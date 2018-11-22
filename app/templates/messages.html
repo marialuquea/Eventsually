@@ -6,7 +6,7 @@
         {{ message.title }} <br>
         Sender: {{ message.author.username }} <br>
         Message: {{ message.body }} <br>
-        {{ moment(message.timestamp).fromNow() }} <br>
+        {{ moment(message.timestamp).fromNow() }}
         <a href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
     {% endfor %}
 

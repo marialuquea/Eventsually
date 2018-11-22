@@ -43,7 +43,7 @@ class RegistrationForm(FlaskForm):
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     profilepic = FileField(validators=[
                             FileRequired(),
-                            FileAllowed(['png'], 'Only png!') ])
+                            FileAllowed(['jpg', 'jpeg', 'png'], 'Only jpg and png!') ])
     submit = SubmitField('Register')
 
     def validate_username(self, username):
@@ -58,9 +58,6 @@ class RegistrationForm(FlaskForm):
 
 class PostForm(FlaskForm):
     title = StringField('Event title', validators=[DataRequired()])
-    eventphoto = FileField(validators=[
-                            FileRequired(),
-                            FileAllowed(['png'], 'Only png!') ])
     date = DateField('Event date dd-mm-yyyy', format='%d-%m-%Y')
     time = DateTimeField('Time of the event', format='%H:%M')
     venue = StringField('Where is the event taking place?', validators=[DataRequired()])

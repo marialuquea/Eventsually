@@ -49,12 +49,8 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        file = request.files['eventphoto']
-        filename = form.title.data + '.jpg'
-        file.save(os.path.join(app.root_path, 'static/event_pics', filename))
         post = Post(
             title=form.title.data,
-            eventphoto=url_for('static', filename='event_pics/' + filename),
             date=form.date.data,
             time=form.time.data,
             venue=form.venue.data,
@@ -86,7 +82,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
 	next_page = request.args.get('next')
 	if not next_page or url_parse(next_page).netloc != '':
-		next_page = url_for('explore')
+		next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
