@@ -13,19 +13,24 @@ from PIL import Image
 @app.route('/interested/<user_id>/<post_id>')
 @login_required
 def interested(post_id, user_id):
-    if UserList.query.filter_by(user_id=user_id).filter_by(post_id=post_id) is None:
-        post = Post.query.get(post_id)
-        item = UserList(
-            post_id=post_id,
-            user_id=user_id,
-            event_interested=post)
-        db.session.add(item)
-        db.session.commit()
-        flash('You are interested in this event')
-        return redirect(url_for('explore'))
-    else:
-        flash('You are already interest in this event')
-        return redirect(url_for('explore'))
+    post = Post.query.get(post_id)
+    item = UserList(
+    post_id=post_id,
+    user_id=user_id,
+    event_interested=post)
+    db.session.add(item)
+    db.session.commit()
+    flash('You are interested in this event')
+    return redirect(url_for('explore'))
+
+@app.route('/notinterested/<user_id>/<post_id>')
+@login_required
+def not_interested(post_id, user_id):
+    relation = UserList.query.filter_by(post_id=post_id).filter_by(user_id=user_id)[0]
+    db.session.delete(relation)
+    db.session.commit()
+    flash('You are not interested in this event anymore')
+    return redirect(url_for('explore'))
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
