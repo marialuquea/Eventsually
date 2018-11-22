@@ -32,8 +32,8 @@
     {% endfor %}
     <h1>Events I will be attending (and getting super drunk at):</h1>
 
-    {% for event in events %}
-      {{ event.title }}
+    {% for post in postList %}
+      {% include '_post.html' %}
     {% endfor %}
 
     <!--
