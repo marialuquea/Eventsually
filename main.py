@@ -116,7 +116,7 @@ def register():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    image_file = url_for('static', filename='profile_pics/' + user.profilepic)
+    image_file = user.profilepic
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
