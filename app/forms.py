@@ -58,13 +58,13 @@ class RegistrationForm(FlaskForm):
 
 class PostForm(FlaskForm):
     title = StringField('Event title', validators=[DataRequired()])
-    eventphoto = FileField('Event photo', validators=[
-                            FileRequired(),
-                            FileAllowed(['png'], 'Only png!') ])
     date = DateField('Event date dd-mm-yyyy', format='%d-%m-%Y')
     time = DateTimeField('Time of the event', format='%H:%M')
     venue = StringField('Where is the event taking place?', validators=[DataRequired()])
     post = TextAreaField('What is the event about?', validators=[DataRequired()])
+    eventphoto = FileField('Event photo', validators=[
+                            FileRequired(),
+                            FileAllowed(['png'], 'Only png!') ])
     submit = SubmitField('Submit')
 
 class ResetP(FlaskForm):
