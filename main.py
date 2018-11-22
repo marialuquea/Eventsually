@@ -49,8 +49,12 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
+        eventphoto = request.files['eventphoto']
+        photoname = form.title.data + '.jpg'
+        file.save(os.path.join(app.root_path, 'static/event_pics', photoname)
         post = Post(
             title=form.title.data,
+            eventphoto=url_for('static', filename='event_pics' + photoname),
             date=form.date.data,
             time=form.time.data,
             venue=form.venue.data,
@@ -63,7 +67,7 @@ def index():
         return redirect(url_for('explore'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('index', page=posts.next_num) \
+    next_url = url_for('explore', page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('index', page=posts.prev_num) \
         if posts.has_prev else None
@@ -82,7 +86,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
 	next_page = request.args.get('next')
 	if not next_page or url_parse(next_page).netloc != '':
-		next_page = url_for('index')
+		next_page = url_for('explore')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
