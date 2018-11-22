@@ -270,7 +270,7 @@ def messages():
 @login_required
 def delete_message(message):
     message = Message.query.filter_by(id=message).first()
-    if !current_user.is_authenticated:
+    if not (current_user.is_authenticated):
         abort(403)
     db.session.delete(message)
     db.session.commit()
