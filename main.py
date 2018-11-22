@@ -18,14 +18,11 @@ def edit_profile():
         if form.profilepic.data:
             filename = form.username.data + '.png'
             p_path = os.path.join(app.root_path, 'static/profile_pics', filename)
-
             output_size = (125, 125)
             i = Image.open(form.profilepic.data)
             i.thumbnail(output_size)
             i.save(p_path)
-
-            profilepic = filename
-            current_user.profilepic = profilepic
+            current_user.profilepic = url_for('static', filename='profile_pics/' + filename)
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         current_user.email = form.email.data
