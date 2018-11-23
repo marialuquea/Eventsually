@@ -6,7 +6,7 @@
 
   <div class="profilepic">
     {% if image_file %}
-    <td width="50px"><img src="{{ image_file }}"></td>
+    <td><img src="{{ image_file }}"></td>
     {% endif %}
   </div>
 
@@ -16,10 +16,10 @@
     {% if user.last_seen %}
     <p>Last seen on: {{ moment(user.last_seen).calendar() }}</p>
     {% endif %}
-    <table>
+    <table class="followers">
       <tr>
-        <td>Followers:</td>
-        <td>Following:</td>
+        <th>Followers:</th>>
+        <th>Following:</th>
       </tr>
       <tr>
         <td>{{ user.followers.count() }}</td>
