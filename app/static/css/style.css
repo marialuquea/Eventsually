@@ -81,6 +81,7 @@ NAVBAR
   height: 70px;
   background-image: url("../images/navbarback.png");
   width: 100%;
+  font-family: "Delius Unicase";
 }
 .nav ul{
   margin: 0;
@@ -224,11 +225,13 @@ NAVBAR
   border-radius: 5px;
   padding: 20px;
   font-family: "Didact Gothic";
+  margin: 5px;
 }
 .event-photo{
   height: 200px;
   width: 200px;
   align: right;
+  border-radius: 10px;
 }
 .event-info{
   font-family: "Didact Gothic";
@@ -237,6 +240,7 @@ NAVBAR
 .fondo{
   background-color: dimgrey;
   border-radius: 4px;
+  padding: 0 30px;
 }
 table .date {
   padding: 0 30px;
