@@ -2,7 +2,7 @@
 
 ## Coursework 2
 
-### Eventsually, a flask app used to find evemts near you and post your own
+### Eventsually, a flask app used to find events near you and post your own
 
 #### To run the program:
 
