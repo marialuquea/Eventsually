@@ -9,6 +9,10 @@
 
 {% block app_content %}
 
+{% if post %}
+  {% include '_post.html' %}
+{% endif %}
+
 {% if form %}
 <h1>Leave a comment:</h1>
 
@@ -31,9 +35,7 @@
 <h1 class="event-name">No form</h1>
 {% endif %}
 
-{% if post %}
-{% include '_post.html' %}
-{% endif %}
+
 
 {% if comments %}
   {% for c in comments %}

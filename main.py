@@ -191,6 +191,9 @@ def post(post_id):
 @app.route('/post/comment/<post_id>', methods=['GET', 'POST'])
 @login_required
 def comment(post_id):
+    print(post_id)
+    post = Post.query.get(post_id)
+    print(post)
     form = CommentForm()
     print('1')
     if form.validate_on_submit():
@@ -198,7 +201,7 @@ def comment(post_id):
         comment = Comment(
             username = current_user.username,
             body = form.body.data,
-            post = Post.query.get(post_id))
+            post = post)
         db.session.add(comment)
         db.session.commit()
         print('3')
