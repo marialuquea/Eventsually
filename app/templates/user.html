@@ -1,7 +1,6 @@
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
   <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
   <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
 </head>
@@ -15,7 +14,7 @@
     {% if image_file %}
     <td><img src="{{ image_file }}"></td>
     {% endif %}
-    <h1 class="username">{{ user.username }}</h1>
+    <h1 class="event-name">{{ user.username }}</h1>
     {% if user.about_me %}
       <p>{{ user.about_me }}</p>
     {% endif %}
@@ -36,24 +35,24 @@
       </tr>
     </table>
     {% if user == current_user %}
-    <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+    <p><a class="link" href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
     {% elif not current_user.is_following(user) %}
-    <p><a href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
+    <p><a class="link" href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
     {% else %}
-    <p><a href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
+    <p><a class="link" href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
     {% endif %}
     {% if user != current_user %}
-    <p><a href="{{ url_for('send_message', recipient=user.username) }}">{{ 'Send private message' }}</a></p>
+    <p><a class="link" href="{{ url_for('send_message', recipient=user.username) }}">{{ 'Send private message' }}</a></p>
     {% endif %}
   </div>
 </div>
 
-<h1 padding-left="20px">My events</h1>
+<h1 class="event-name">My events</h1>
 {% for post in posts %}
     {% include '_post.html' %}
 {% endfor %}
 
-<h1 padding-left="20px">Events I will be attending:</h1>
+<h1 class="event-name">Events I will be attending:</h1>
 <h3>(and getting super drunk at)</h3>
 
 {% for post in postList %}

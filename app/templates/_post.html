@@ -48,10 +48,10 @@
         <img src="{{ post.eventphoto }}">
       </td>
     </tr>
-    {% if form %}
-    <tr>
-      <h1>Leave a comment:</h1>
+  </table>
 
+    {% if form %}
+      <h1>Leave a comment:</h1>
       <form class="postform back-form" method="post">
         {{ form.hidden_tag () }}
         {{ form.csrf_token }}
@@ -66,10 +66,9 @@
           {{ form.submit (class="button") }}
         </label>
       </form>
-    </tr>
     {% else %}
       <h1 class="event-name">Something went wrong!</h1>
     {% endif %}
 
-  </table>
+
 </div>

@@ -232,15 +232,16 @@ def update_post(post_id):
         form.post.data = post.body
     return render_template('update_post.html', form=form, post=post)
 
-@app.route("/post/<int:post_id>/delete", methods=['GET', 'POST'])
+@app.route("/post/<post_id>/delete", methods=['GET', 'POST'])
 @login_required
 def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
+        flash("You didn't create this event so you can't delete it mthfker!")
         abort(403)
     db.session.delete(post)
     db.session.commit()
-    flash('Your post has been deleted!')
+    flash('Your post has been deleted :( sad very sad)')
     return redirect(url_for('index'))
 
 @app.route('/follow/<username>')
