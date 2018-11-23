@@ -184,25 +184,31 @@ def post(post_id):
 @login_required
 def comment(post_id):
     form = CommentForm()
+    print('1')
     if form.validate_on_submit():
+        print('2')
         comment = Comment(
             username = current_user.username,
             body = form.body.data,
             post = Post.query.get(post_id))
         db.session.add(comment)
         db.session.commit()
+        print('3')
         flash('Your comment has been posted :)')
         return redirect(url_for('post', post_id=post_id))
     else:
         flash(form.errors)
+        print('did not work')
         return redirect(url_for('post', post_id=post_id))
 
-@app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
+@app.route("/post/<post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
-            abort(403)
+        flash('You cannot edit this post')
+        print('NOOO')
+        abort(403)
     form = PostForm()
     if form.validate_on_submit():
         post.title = form.title.data
