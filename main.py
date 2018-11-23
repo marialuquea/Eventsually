@@ -180,6 +180,11 @@ def delete_user(username):
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     comments = post.comments.order_by(Comment.timestamp.desc())
+    comment = Comment{
+        username = 'maria',
+        body = 'hello this is a comment',
+        post = Post.query.get(post_id))
+    comments.add(comment)
     return render_template('showEvent.html', post=post, comments=comments)
 
 @app.route('/post/comment/<post_id>', methods=['GET', 'POST'])
@@ -202,7 +207,7 @@ def comment(post_id):
         print('did not work')
         print (form.errors)
         return render_template('showEvent.html', form=form, post=post)
-    
+
 @app.route("/post/<post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):

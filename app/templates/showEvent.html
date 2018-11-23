@@ -36,7 +36,10 @@
 {% endif %}
 
 {% if comments %}
-
+  {% for c in comments %}
+  <p>Sender: {{ c.username }}</p>
+  <p>Body: {{ c.body }}</p>
+  {% endfor %}
 {% endif %}
 
 {% endblock %}
