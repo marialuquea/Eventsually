@@ -180,7 +180,7 @@ def delete_user(username):
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     comments = post.comments.order_by(Comment.timestamp.desc())
-    return render_template('_post.html', post=post, comments=comments)
+    return render_template('showEvent.html', post=post, comments=comments)
 
 @app.route('/post/comment/<post_id>', methods=['GET', 'POST'])
 @login_required
