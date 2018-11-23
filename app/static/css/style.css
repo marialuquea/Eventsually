@@ -3,7 +3,7 @@ MAIN THINGS
 */
 h1 {
   font-family: 'Delius Unicase';
-  color: #CF98C2;
+  color: #CF98C2; /* PURPLE */
 }
 
 
@@ -192,7 +192,7 @@ NAVBAR
 */
 
 .event-month{
-  color: #5BC0DE;
+  color: #CF98C2; /* PURPLE */
   font-size: 61px;
   font-family: 'Delius Unicase';
 }
@@ -200,8 +200,9 @@ NAVBAR
   font-size: 96px;
   text-align: center;
   font-family: 'Delius Unicase';
+  color: white;
 }
 .fondo{
-  background-color: #CF98C2;
+  background-color: #FDE7DC; /* BEIGE */
   border-radius: 10px;
 }
