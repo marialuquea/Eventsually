@@ -49,26 +49,4 @@
       </td>
     </tr>
   </table>
-
-    {% if form %}
-      <h1>Leave a comment:</h1>
-      <form class="postform back-form" method="post">
-        {{ form.hidden_tag () }}
-        {{ form.csrf_token }}
-        <label class="post-label">
-          {{ form.body.label (class="label-txt") }}
-          {{ form.body (class="input") }}
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-        </label>
-        <label class="post-label">
-          {{ form.submit (class="button") }}
-        </label>
-      </form>
-    {% else %}
-      <h1 class="event-name">Something went wrong!</h1>
-    {% endif %}
-
-
 </div>
