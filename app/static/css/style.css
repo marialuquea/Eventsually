@@ -201,6 +201,7 @@ NAVBAR
   text-align: center;
   font-family: 'Delius Unicase';
   color: white;
+  margin-bottom: 0;
 }
 .fondo{
   background-color: dimgrey;
@@ -208,4 +209,8 @@ NAVBAR
 }
 table .date {
   padding: 0 30px;
+}
+table {
+  border: 1px dimgrey solid;
+  border-radius: 4px;
 }
