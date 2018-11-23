@@ -200,6 +200,7 @@ NAVBAR
 */
 .event{
   padding-left: 20px;
+  width: 100%;
 }
 .event-name{
   font-family: 'Delius Unicase';
