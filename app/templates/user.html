@@ -43,9 +43,9 @@
     {% if user == current_user %}
     <p><a class="link" href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
     {% elif not current_user.is_following(user) %}
-    <p><a class="link followers" href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
+    <div><a class="follow" href="{{ url_for('follow', username=user.username) }}">Follow</a></div>
     {% else %}
-    <p><a class="link followers" href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
+    <div><a class="follow" href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></div>
     {% endif %}
     <br><br>
     {% if user != current_user %}

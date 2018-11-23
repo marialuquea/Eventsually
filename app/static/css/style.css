@@ -313,3 +313,10 @@ USER
 .follower-count{
   padding-left: 5px;
 }
+.follow{
+  background-color: #F8BAAD; /*PASTEL ORANGE */
+  font-family: "Didact Gothic";
+  color: white;
+  margin: auto;
+  font-weight: bold;
+}
