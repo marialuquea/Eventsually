@@ -202,7 +202,7 @@ def comment(post_id):
         print('did not work')
         print (form.errors)
         return redirect(url_for('post', post_id=post_id))
-    return render_template('_post.html', form=form, post=post, comments=comments)
+    return render_template('showEvent.html', form=form, post=post, comments=comments)
 
 @app.route("/post/<post_id>/update", methods=['GET', 'POST'])
 @login_required

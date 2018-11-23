@@ -25,12 +25,17 @@
           <div class="line"></div>
         </div>
       </label>
+      
       <label class="post-label">
         {{ form.submit (class="button") }}
       </label>
     </form>
   {% else %}
     <h1 class="event-name">No form</h1>
+  {% endif %}
+
+  {% if comments %}
+
   {% endif %}
 
 {% endblock %}
