@@ -16,15 +16,17 @@
     <ul>
       <li><a href="{{ url_for('explore') }}">Discover Events</a></li>
       <li><a href="{{ url_for('index') }}">Post Event</a></li>
-      <li><a href="{{ url_for('messages') }}">
-          {{ 'Messages' }}
-          {% set new_messages = current_user.new_messages() %}
-          {% if new_messages %}
-            <span>{{ new_messages }}</span>
-          {% endif %}
-      </a></li>
-      <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
-      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      <div class="to-the-right">
+        <li><a href="{{ url_for('messages') }}">
+            {{ 'Messages' }}
+            {% set new_messages = current_user.new_messages() %}
+            {% if new_messages %}
+              <span>{{ new_messages }}</span>
+            {% endif %}
+        </a></li>
+        <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </div>
     </ul>
   </div>
 

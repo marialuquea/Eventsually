@@ -63,6 +63,7 @@ NAVBAR
 .nav{
   height: 70px;
   background-image: url("../images/navbar.png");
+  width: 100%;
 }
 .nav ul{
   margin: 0;
@@ -72,18 +73,19 @@ NAVBAR
   font-family: 'Delius Unicase';
   font-size: 20px;
   float: left;
-  width: 20%;
 }
 .nav a {
   padding: 21px 10px;
   text-decoration: none;
   display: inline-block;
-  justify-content: center;
   color: grey;
 }
 .nav a:hover{
   background-color: #75A8B3;
   color: white;
+}
+.to-the-right{
+  align-items: right;
 }
 
 /*
