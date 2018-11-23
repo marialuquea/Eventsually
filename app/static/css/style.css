@@ -9,6 +9,10 @@ h3{ color: #CF98C2;}
 
 a {
   color: #D195D5; /*PURPLE */
+  font-family: "Didact Gothic";
+}
+p{
+  font-family: "Didact Gothic";
 }
 
 /*
@@ -223,6 +227,10 @@ NAVBAR
   height: 200px;
   width: 200px;
   align: right;
+}
+.event-info{
+  font-family: "Didact Gothic";
+  font-size: 12px;
 }
 .fondo{
   background-color: dimgrey;
