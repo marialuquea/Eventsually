@@ -205,16 +205,24 @@ def update_post(post_id):
             abort(403)
     form = PostForm()
     if form.validate_on_submit():
-        post.body = form.body.data
+        post.title = form.title.data
+        post.date = form.date.data
+        post.time = form.time.data
+        pot.venue = form.venue.data
+        post.post = form.post.data
+        file = request.files['eventphoto']
+        filename = form.title.data + '.png'
+        file.save(os.path.join(app.root_path, 'static/event_pics', filename))
+        post.eventphoto = url_for('static', filename='event_pics/' + filename)
         db.session.commit()
         flash('Your post has been updated!')
         return redirect(url_for('post', post_id=post.id))
     elif request.method == 'GET':
         form.title.data = post.title
         form.date.data = post.date
-        form.time.data = form.time
-        form.venue.data = form.venue
-        form.post.data = form.post
+        form.time.data = post.time
+        form.venue.data = post.venue
+        form.post.data = post.post
     return render_template('update_post.html', form=form, post=post)
 
 @app.route("/post/<int:post_id>/delete", methods=['GET', 'POST'])
