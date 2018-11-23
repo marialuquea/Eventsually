@@ -11,6 +11,11 @@
 
 {% block app_content %}
 
-  {{ wtf.quick_form(form) }}
+  {% if form %}
+    <h1>Form should be here :)</h1>
+  {% else %}
+    <h1>Something went wrong!</h1>
+    <a href="{{ url_for('index') }}">Back</a>
+  {% endif %}
 
 {% endblock %}

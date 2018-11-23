@@ -9,13 +9,13 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>{{ 'Messages' }}</h1>
+    <h1>Messages</h1>
     {% for message in messages %}
-        {{ message.title }} <br>
-        Sender: {{ message.author.username }} <br>
-        Message: {{ message.body }} <br>
-        {{ moment(message.timestamp).fromNow() }} <br>
+      <div class="event-description">
+        <p>{{ message.author.username }} said {{ moment(message.timestamp).fromNow() }}:</p>
+        <p>{{ message.body }}</p>
         <a href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
+      </div>
     {% endfor %}
 
 {% endblock %}

@@ -12,8 +12,23 @@
 {% block app_content %}
     <h1>Send message to {{ recipient }}</h1>
     <div>
-        <div>
-            {{ wtf.quick_form(form) }}
-        </div>
+      {% if form %}
+        <form class="postform back-form" method="post">
+          {{ form.hidden_tag () }}
+          {{ form.csrf_token }}
+          <label class="post-label">
+            {{ form.message.label (class="label-txt") }}
+            {{ form.message (class="input") }}
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label class="post-label">
+            {{ form.submit (class="button") }}
+          </label>
+        </form>
+      {% else %}
+
+      {% endif %}
     </div>
 {% endblock %}
