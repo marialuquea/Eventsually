@@ -224,16 +224,15 @@ USER
 */
 
 .user{
-  display: grid;
+  margin: auto;
+  width: 50%;
   grid-template-rows: auto auto;
   padding: 20px;
   border: 1px solid dimgrey;
   border-radius: 10px;
 }
 .profilepic .profile-info{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: auto;
 }
 .profilepic img{
   border-radius: 100px;
@@ -241,7 +240,7 @@ USER
 }
 .followers{ width: 100% }
 .followers th{
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 .followers td{

@@ -16,10 +16,11 @@
     {% if user.last_seen %}
     <p>Last seen on: {{ moment(user.last_seen).calendar() }}</p>
     {% endif %}
+    <br>
     <table class="followers">
       <tr>
-        <th>Followers:</th>>
-        <th>Following:</th>
+        <th>Followers</th>>
+        <th>Following</th>
       </tr>
       <tr>
         <td>{{ user.followers.count() }}</td>
