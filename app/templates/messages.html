@@ -11,7 +11,7 @@
     {% for message in messages %}
       <div class="event-description" width="70%">
         <p>
-          <a class="link" href="{{ url_for('user', user_id=message.author.id) }}">{{ message.author.username }}</a>
+          <a class="link" href="{{ url_for('user', username=message.author.username) }}">{{ message.author.username }}</a>
           said {{ moment(message.timestamp).fromNow() }}:
         </p>
         <p>{{ message.body }}</p>
