@@ -194,7 +194,14 @@ NAVBAR
 /*
  POST CSS
 */
-
+.event{
+  padding-left: 20px;
+}
+.event-name{
+  font-family: 'Delius Unicase';
+  color: #CF98C2; /* PINK */
+  font-size: 40px;
+}
 .event-month{
   color: #CF98C2; /* PURPLE */
   font-size: 61px;
@@ -207,6 +214,10 @@ NAVBAR
   color: white;
   margin-bottom: 0;
 }
+.event-description{
+  background-color: #FAEAEA;
+  border-radius: 5px;
+}
 .fondo{
   background-color: dimgrey;
   border-radius: 4px;
@@ -217,6 +228,7 @@ table .date {
 .post{
   border: 1px solid dimgrey;
   border-radius: 10px;
+  margin: 20px;
 }
 
 /*

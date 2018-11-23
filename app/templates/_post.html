@@ -12,29 +12,30 @@
         <p class="event-month">{{ post.date.strftime("%b") }}</p>
         <p class="event-day">{{ post.date.strftime("%d") }}</p>
       </td>
-      <td>
-        <a href="{{ url_for('post', post_id=post.id) }}">
+      <td class="event">
+        <a href="{{ url_for('post', post_id=post.id) }}" class="event-name">
           {{ post.title }}
         </a>
         <br>
-        {{ post.date.strftime("%a, %b %d %Y") }}
-        at {{ post.time.strftime("%H:%M") }}
-        <br>
-        {{ post.venue }}
-        <br>
+        <div class="event-description">
+          {{ post.body }}
+        </div>
         Posted by:
         <a href="{{ url_for('user', username=post.author.username) }}">
           {{ post.author.username }}
         </a>
         {{ moment(post.timestamp).fromNow() }}
         <br>
-        Description: {{ post.body }}
+        {{ post.date.strftime("%a, %b %d %Y") }}
+        at {{ post.time.strftime("%H:%M") }}
+        <br>
+        <img src="../static/images/location.png" height="20px">
+        {{ post.venue }}
         <br>
         {% if post.author.username == current_user.username %}
         <a href="{{ url_for('delete_post', post_id=post.id) }}">Delete post</a>
         {% endif %}
         <br>
-
         <a href="{{ url_for('interested', post_id=post.id, user_id=current_user.id) }}">Interested</a>
         <br>
         <a href="{{ url_for('not_interested', post_id=post.id, user_id=current_user.id) }}">Not Interested anymore</a>
