@@ -179,7 +179,8 @@ def delete_user(username):
 @login_required
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    comments = post.comments.order_by(Comment.timestamp.desc())
+    # comments = post.comments.order_by(Comment.timestamp.desc())
+    comments = []
     comment = Comment(
         username = 'maria',
         body = 'hello this is a comment',
