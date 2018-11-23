@@ -48,6 +48,7 @@ LOGIN PAGE
 .login-link {
   z-index: 1;
   color: dimgrey;
+  font-family: "Cookie";
 }
 
 textarea{
