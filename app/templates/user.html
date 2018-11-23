@@ -2,54 +2,53 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <table class="table table-hover">
-        <tr>
-          {% if image_file %}
-            <td width="50px"><img src="{{ image_file }}"></td>
-          {% endif %}
-            <td>
-                <h1>{{ user.username }}</h1>
-                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-                {% if user.last_seen %}
-                <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
-                {% endif %}
-                <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
-                {% if user == current_user %}
-                <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
-                {% elif not current_user.is_following(user) %}
-                <p><a href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
-                {% else %}
-                <p><a href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
-                {% endif %}
-                {% if user != current_user %}
-                <p><a href="{{ url_for('send_message', recipient=user.username) }}">{{ 'Send private message' }}</a></p>
-                {% endif %}
-            </td>
-        </tr>
+<div class="user">
+
+  <div class="profilepic">
+    {% if image_file %}
+    <td width="50px"><img src="{{ image_file }}"></td>
+    {% endif %}
+  </div>
+
+  <div class="profile-info">
+    <h1 class="username">{{ user.username }}</h1>
+    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+    {% if user.last_seen %}
+    <p>Last seen on: {{ moment(user.last_seen).calendar() }}</p>
+    {% endif %}
+    <table>
+      <tr>
+        <td>Followers:</td>
+        <td>Following:</td>
+      </tr>
+      <tr>
+        <td>{{ user.followers.count() }}</td>
+        <td>{{ user.followed.count() }}</td>
+      </tr>
     </table>
-    <h1>My events</h1>
-    {% for post in posts %}
-        {% include '_post.html' %}
-    {% endfor %}
-    <h1>Events I will be attending (and getting super drunk at):</h1>
+    {% if user == current_user %}
+    <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+    {% elif not current_user.is_following(user) %}
+    <p><a href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
+    {% else %}
+    <p><a href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
+    {% endif %}
+    {% if user != current_user %}
+    <p><a href="{{ url_for('send_message', recipient=user.username) }}">{{ 'Send private message' }}</a></p>
+    {% endif %}
+  </div>
+</div>
 
-    {% for post in postList %}
-      {% include '_post.html' %}
-    {% endfor %}
+<h1>My events</h1>
+{% for post in posts %}
+    {% include '_post.html' %}
+{% endfor %}
 
-    <nav aria-label="...">
-        <ul class="pager">
-            <li class="previous{% if not prev_url %} disabled{% endif %}">
-                <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span> Newer posts
-                </a>
-            </li>
-            <li class="next{% if not next_url %} disabled{% endif %}">
-                <a href="{{ next_url or '#' }}">
-                    Older posts <span aria-hidden="true">&rarr;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<h1>Events I will be attending:</h1>
+<h3>(and getting super drunk at)</h3>
+
+{% for post in postList %}
+{% include '_post.html' %}
+{% endfor %}
 
 {% endblock %}

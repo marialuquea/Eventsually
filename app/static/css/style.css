@@ -3,9 +3,13 @@ MAIN THINGS
 */
 h1 {
   font-family: 'Delius Unicase';
-  color: #CF98C2; /* PURPLE */
+  color: #CF98C2; /* PINK */
 }
+h3{ color: #CF98C2;}
 
+a {
+  color: #D195D5; /*PURPLE */
+}
 
 /*
 LOGIN PAGE
@@ -210,7 +214,7 @@ NAVBAR
 table .date {
   padding: 0 30px;
 }
-table {
-  border: 1px dimgrey solid;
-  border-radius: 4px;
+.post{
+  border: 1px solid dimgrey;
+  border-radius: 10px;
 }

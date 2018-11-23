@@ -5,57 +5,59 @@
   <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
 </head>
 
-<table>
-        <tr class="date">
-            <td width="70px" class="fondo" >
-              <p class="event-month">{{ post.date.strftime("%b") }}</p>
-              <p class="event-day">{{ post.date.strftime("%d") }}</p>
-            </td>
-            <td>
-                <a href="{{ url_for('post', post_id=post.id) }}">
-                  {{ post.title }}
-                </a>
-                <br>
-                {{ post.date.strftime("%a, %b %d %Y") }}
-                at {{ post.time.strftime("%H:%M") }}
-                <br>
-                {{ post.venue }}
-                <br>
-                Posted by:
-                <a href="{{ url_for('user', username=post.author.username) }}">
-                    {{ post.author.username }}
-                </a>
-                {{ moment(post.timestamp).fromNow() }}
-                <br>
-                Description: {{ post.body }}
-                <br>
-                {% if post.author.username == current_user.username %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}">Delete post</a>
-                {% endif %}
-                <br>
-
-            <a href="{{ url_for('interested', post_id=post.id, user_id=current_user.id) }}">Interested</a>
-            <br>
-            <a href="{{ url_for('not_interested', post_id=post.id, user_id=current_user.id) }}">Not Interested anymore</a>
-
-            </td>
-            <td width="210px">
-              <img src="{{ post.eventphoto }}" height="200px" width="200px">
-            </td>
-        </tr>
-        {% if form %}
-          <tr>
-            <h1>Leave a comment:</h1>
-
-            <form class="" action="index.html" method="post">
-              {{ form.hidden_tag () }}
-
-              {{ form.body.label }}
-              {{ form.body }}
-
-              {{ form.submit (class="button") }}
-            </form>
-          </tr>
+<div class="post">
+  <table>
+    <tr class="date">
+      <td class="fondo">
+        <p class="event-month">{{ post.date.strftime("%b") }}</p>
+        <p class="event-day">{{ post.date.strftime("%d") }}</p>
+      </td>
+      <td>
+        <a href="{{ url_for('post', post_id=post.id) }}">
+          {{ post.title }}
+        </a>
+        <br>
+        {{ post.date.strftime("%a, %b %d %Y") }}
+        at {{ post.time.strftime("%H:%M") }}
+        <br>
+        {{ post.venue }}
+        <br>
+        Posted by:
+        <a href="{{ url_for('user', username=post.author.username) }}">
+          {{ post.author.username }}
+        </a>
+        {{ moment(post.timestamp).fromNow() }}
+        <br>
+        Description: {{ post.body }}
+        <br>
+        {% if post.author.username == current_user.username %}
+        <a href="{{ url_for('delete_post', post_id=post.id) }}">Delete post</a>
         {% endif %}
+        <br>
 
-</table>
+        <a href="{{ url_for('interested', post_id=post.id, user_id=current_user.id) }}">Interested</a>
+        <br>
+        <a href="{{ url_for('not_interested', post_id=post.id, user_id=current_user.id) }}">Not Interested anymore</a>
+
+      </td>
+      <td width="210px">
+        <img src="{{ post.eventphoto }}" height="200px" width="200px">
+      </td>
+    </tr>
+    {% if form %}
+    <tr>
+      <h1>Leave a comment:</h1>
+
+      <form class="" action="index.html" method="post">
+        {{ form.hidden_tag () }}
+
+        {{ form.body.label }}
+        {{ form.body }}
+
+        {{ form.submit (class="button") }}
+      </form>
+    </tr>
+    {% endif %}
+
+  </table>
+</div>
