@@ -18,8 +18,9 @@ p{
   padding: 10px;
   background-color: #CCDAC1; /* PALE GREEN*/
   border: 1px solid #BAC3AE;
-  color: #BAC3AE;
+  color: white;
   border-radius: 4px;
+  margin: auto;
 }
 
 /*
@@ -273,7 +274,6 @@ table .date {
 /*
 USER
 */
-
 .user{
   margin: auto;
   margin-top: 20px;
@@ -300,16 +300,7 @@ USER
   justify-content: center;
   align-items: center;
 }
-.followers{ width: 100% }
-.followers th{
-  text-align: center;
-  padding: 8px;
-}
-.followers td{
-  text-align: center;
-}
-.followers tr:nth-child(even){background-color: white;}
-.followers th{
-  background-color: #F8BAAD;
-  color: dimgrey;
+.followers{
+  border: 1px dashed #F8BAAD; /*PASTEL ORANGE */
+  font-family: "Didact Gothic";
 }
