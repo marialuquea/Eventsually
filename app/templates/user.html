@@ -12,14 +12,14 @@
 
   <div class="profilepic">
     {% if image_file %}
-    <td><img align="center" src="{{ image_file }}"></td>
+    <p><img src="{{ image_file }}"></p>
     {% endif %}
     <h1 class="event-name" align="center">{{ user.username }}</h1>
     {% if user.about_me %}
       <p align="center">{{ user.about_me }}</p>
     {% endif %}
     {% if user.last_seen %}
-    <p align="right">Last seen on: {{ moment(user.last_seen).calendar() }}</p>
+    <p align="right">Last seen: {{ moment(user.last_seen).calendar() }}</p>
     {% endif %}
   </div>
   <br>
@@ -49,18 +49,18 @@
     {% endif %}
     <br><br>
     {% if user != current_user %}
-    <p><a class="link" href="{{ url_for('send_message', recipient=user.username) }}">{{ 'Send private message' }}</a></p>
+    <p><a class="link" href="{{ url_for('send_message', recipient=user.username) }}">Send message</a></p>
     {% endif %}
   </div>
 </div>
 
-<h1 class="event-name">My events</h1>
+<h1 class="event-name">{{ user.username }}'s events</h1>
 {% for post in posts %}
     {% include '_post.html' %}
 {% endfor %}
 
-<h1 class="event-name">Events I will be attending:</h1>
-<h3>(and getting super drunk at)</h3>
+<h1 class="event-name">Events {{ user.username }} will be attending:</h1>
+<p class="link">(and getting super drunk at)</p>
 
 {% for post in postList %}
 {% include '_post.html' %}

@@ -20,7 +20,7 @@ p{
   border: 1px solid #BAC3AE;
   color: white;
   border-radius: 4px;
-  margin: auto;
+  margin: 20px auto;
 }
 
 /*
@@ -292,7 +292,7 @@ USER
   border-radius: 100px;
   width: 200px;
 }
-.profilepic td{
+.profilepic p {
   text-align: center;
 }
 .profile-info{
@@ -319,4 +319,6 @@ USER
   color: white;
   margin: auto;
   font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 18px;
 }
