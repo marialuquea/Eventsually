@@ -259,6 +259,7 @@ USER
 
 .user{
   margin: auto;
+  margin-top: 20px;
   width: 50%;
   grid-template-rows: auto auto;
   padding: 20px;
