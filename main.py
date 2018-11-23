@@ -197,13 +197,12 @@ def comment(post_id):
         db.session.commit()
         print('3')
         flash('Your comment has been posted :)')
-        return redirect(url_for('post', post_id=post_id, form=form))
+        return render_template('showEvent.html', form=form, post=post)
     else:
         print('did not work')
         print (form.errors)
-        return redirect(url_for('post', post_id=post_id))
-    return render_template('showEvent.html', form=form, post=post, comments=comments)
-
+        return render_template('showEvent.html', form=form, post=post)
+    
 @app.route("/post/<post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
