@@ -184,7 +184,7 @@ def post(post_id):
         username = 'maria',
         body = 'hello this is a comment',
         post = Post.query.get(post_id))
-    comments.add(comment)
+    comments.append(comment)
     return render_template('showEvent.html', post=post, comments=comments)
 
 @app.route('/post/comment/<post_id>', methods=['GET', 'POST'])
