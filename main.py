@@ -222,7 +222,7 @@ def update_post(post_id):
         form.date.data = post.date
         form.time.data = post.time
         form.venue.data = post.venue
-        form.body.data = post.body
+        form.post.data = post.body
     return render_template('update_post.html', form=form, post=post)
 
 @app.route("/post/<int:post_id>/delete", methods=['GET', 'POST'])
