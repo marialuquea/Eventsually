@@ -199,7 +199,7 @@ NAVBAR
 }
 .event-name{
   font-family: 'Delius Unicase';
-  color: #CF98C2; /* PINK */
+  color: #C581CC; /* PURPLE */
   font-size: 40px;
 }
 .event-month{
@@ -217,6 +217,12 @@ NAVBAR
 .event-description{
   background-color: #FAEAEA;
   border-radius: 5px;
+  padding: 20px;
+}
+.event-photo{
+  height: 200px;
+  width: 200px;
+  align: right;
 }
 .fondo{
   background-color: dimgrey;
