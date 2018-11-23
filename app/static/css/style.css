@@ -62,7 +62,7 @@ NAVBAR
 */
 .nav{
   height: 70px;
-  background-mage: url("../images/navbar.png");
+  background-image: url("../images/navbar.png");
 }
 .nav ul{
   margin: 0;
@@ -70,14 +70,15 @@ NAVBAR
 }
 .nav li{
   font-family: 'Delius Unicase';
-  font-size: 25px;
+  font-size: 20px;
   float: left;
   width: 20%;
 }
 .nav a {
-  padding: 19px 10px;
+  padding: 21px 10px;
   text-decoration: none;
   display: inline-block;
+  justify-content: center;
   color: grey;
 }
 .nav a:hover{
