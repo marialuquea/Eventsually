@@ -268,10 +268,15 @@ USER
   border-radius: 10px;
 }
 .profilepic{
-  border-radius: 100px;
-  width: 200px;
   justify-content: center;
   align-items: center;
+}
+.profilepic img{
+  border-radius: 100px;
+  width: 200px;
+}
+.profilepic td{
+  text-align: center;
 }
 .profile-info{
   margin: auto;
