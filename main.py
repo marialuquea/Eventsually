@@ -197,7 +197,7 @@ def comment(post_id):
         db.session.commit()
         print('3')
         flash('Your comment has been posted :)')
-        return redirect(url_for('post', post_id=post_id))
+        return redirect(url_for('post', post_id=post_id, form=form))
     else:
         print('did not work')
         print (form.errors)
