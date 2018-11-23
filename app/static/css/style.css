@@ -22,6 +22,9 @@ p{
   border-radius: 4px;
   margin: 20px auto;
 }
+.separator {
+  border-top: 1px solid #C581CC;
+}
 
 /*
 LOGIN PAGE
@@ -297,8 +300,6 @@ USER
 }
 .profile-info{
   margin: auto;
-  justify-content: center;
-  align-items: center;
 }
 .followers{
   border: 1px dashed #F8BAAD; /*PASTEL ORANGE */
