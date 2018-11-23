@@ -197,7 +197,6 @@ def comment(post_id):
         flash('Your comment has been posted :)')
         return redirect(url_for('post', post_id=post_id))
     else:
-        flash(form.errors)
         print('did not work')
         return redirect(url_for('post', post_id=post_id))
     return render_template('_post.html', form=form, post=post, comments=comments)
