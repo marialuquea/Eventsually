@@ -180,7 +180,7 @@ def delete_user(username):
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     comments = post.comments.order_by(Comment.timestamp.desc())
-    comment = Comment{
+    comment = Comment(
         username = 'maria',
         body = 'hello this is a comment',
         post = Post.query.get(post_id))
