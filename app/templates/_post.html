@@ -5,7 +5,9 @@
               <p class="event-day">{{ post.date.strftime("%d") }}</p>
             </td>
             <td>
-                {{ post.title }}
+                <a href="{{ url_for('post', post_id=post.id) }}">
+                  {{ post.title }}
+                </a>
                 <br>
                 {{ post.date.strftime("%a, %b %d %Y") }}
                 at {{ post.time.strftime("%H:%M") }}
