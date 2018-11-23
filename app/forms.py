@@ -71,6 +71,26 @@ class PostForm(FlaskForm):
                             FileAllowed(['png'], 'Only png!') ])
     submit = SubmitField('Submit')
 
+class EditPostForm(FlaskForm):
+    title = StringField('Event title', validators=[DataRequired()])
+    date = DateField('Event date dd-mm-yyyy', format='%d-%m-%Y')
+    time = DateTimeField('Time of the event', format='%H:%M')
+    venue = StringField('Where is the event taking place?', validators=[DataRequired()])
+    post = TextAreaField('What is the event about?', validators=[DataRequired()])
+    eventphoto = FileField('Event photo', validators=[
+                            FileRequired(),
+                            FileAllowed(['png'], 'Only png!') ])
+    submit = SubmitField('Submit')
+
+    def __init__(self, original_title, original_date, original_time,
+                 original_venue, original_post, *args, **kwargs):
+        super(EditPostForm, self).__init__(*args, **kwargs)
+        self.original_title = original_title
+        self.original_date = original_date
+        self.original_time = original_time
+        self.original_venue = original_venue
+        self.original_post = original_post
+
 class ResetP(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')

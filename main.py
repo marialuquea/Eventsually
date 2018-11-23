@@ -210,7 +210,7 @@ def update_post(post_id):
         flash('You cannot edit this post')
         print('NOOO')
         abort(403)
-    form = PostForm()
+    form = EditPostForm(post.title, post.date, post.time, post.venue, post.post)
     if form.validate_on_submit():
         post.title = form.title.data
         post.date = form.date.data

@@ -41,7 +41,8 @@
         <a class="link" href="{{ url_for('interested', post_id=post.id, user_id=current_user.id) }}">Interested</a>
         <br>
         <a class="link" href="{{ url_for('not_interested', post_id=post.id, user_id=current_user.id) }}">Not Interested anymore</a>
-
+        <br>
+        <a class="link" href="#">Comments</a>
       </td>
       <td class="event-photo">
         <img src="{{ post.eventphoto }}">
