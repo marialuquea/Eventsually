@@ -62,7 +62,7 @@ NAVBAR
 */
 .nav{
   height: 70px;
-  background-image: url("../images/navbar.png");
+  background-image: url("../images/navbarback.png");
   width: 100%;
 }
 .nav ul{
@@ -75,7 +75,7 @@ NAVBAR
   float: left;
 }
 .nav a {
-  padding: 21px 10px;
+  padding: 21px 20px;
   text-decoration: none;
   display: inline-block;
   color: grey;
