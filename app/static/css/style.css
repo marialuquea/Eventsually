@@ -2,12 +2,11 @@
 MAIN THINGS
 */
 h1 {
-  font-family: 'Delius Unicase';
-  color: #CF98C2; /* PINK */
+   /* event-name */
 }
 h3{ color: #CF98C2;}
 
-a {
+.link {
   color: #D195D5; /*PURPLE */
   font-family: "Didact Gothic";
 }

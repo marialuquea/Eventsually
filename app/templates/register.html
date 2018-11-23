@@ -1,14 +1,12 @@
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
   <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
   <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
 </head>
 
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block app_content %}
     <h1>Register</h1>
     <div>
       {%if form %}
@@ -58,4 +56,3 @@
         <h1>Something went wrong!</h1>
       {& endif &}
     </div>
-{% endblock %}

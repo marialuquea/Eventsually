@@ -7,12 +7,15 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>Messages</h1>
+    <h1 class="event-name">Messages</h1>
     {% for message in messages %}
-      <div class="event-description">
-        <p>{{ message.author.username }} said {{ moment(message.timestamp).fromNow() }}:</p>
+      <div class="event-description" width="70%">
+        <p>
+          <a class="link" href="{{ url_for('user', user_id=message.author.id) }}">{{ message.author.username }}</a>
+          said {{ moment(message.timestamp).fromNow() }}:
+        </p>
         <p>{{ message.body }}</p>
-        <a href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
+        <a class="link" href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
       </div>
     {% endfor %}
 
