@@ -210,13 +210,13 @@ def update_post(post_id):
         flash('You cannot edit this post')
         print('NOOO')
         abort(403)
-    form = EditPostForm(post.title, post.date, post.time, post.venue, post.post)
+    form = EditPostForm(post.title, post.date, post.time, post.venue, post.body)
     if form.validate_on_submit():
         post.title = form.title.data
         post.date = form.date.data
         post.time = form.time.data
         pot.venue = form.venue.data
-        post.post = form.post.data
+        post.body = form.post.data
         file = request.files['eventphoto']
         filename = form.title.data + '.png'
         file.save(os.path.join(app.root_path, 'static/event_pics', filename))
