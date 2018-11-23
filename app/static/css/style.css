@@ -303,4 +303,13 @@ USER
 .followers{
   border: 1px dashed #F8BAAD; /*PASTEL ORANGE */
   font-family: "Didact Gothic";
+  width: 20%;
+  float: left;
+  border-radius: 12px;
+}
+.follower-label{
+  padding-left: 3px;
+}
+.follower-count{
+  padding-left: 5px;
 }

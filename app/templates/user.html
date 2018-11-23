@@ -19,7 +19,7 @@
       <p>{{ user.about_me }}</p>
     {% endif %}
     {% if user.last_seen %}
-    <p>Last seen on: {{ moment(user.last_seen).calendar() }}</p>
+    <p align="right">Last seen on: {{ moment(user.last_seen).calendar() }}</p>
     {% endif %}
   </div>
   <br>
@@ -43,10 +43,11 @@
     {% if user == current_user %}
     <p><a class="link" href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
     {% elif not current_user.is_following(user) %}
-    <p><a class="link" href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
+    <p><a class="link followers" href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
     {% else %}
-    <p><a class="link" href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
+    <p><a class="link followers" href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
     {% endif %}
+    <br>
     {% if user != current_user %}
     <p><a class="link" href="{{ url_for('send_message', recipient=user.username) }}">{{ 'Send private message' }}</a></p>
     {% endif %}
