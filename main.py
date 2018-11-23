@@ -180,7 +180,7 @@ def post(post_id):
     comments = post.comments.order_by(Comment.timestamp.desc())
     return render_template('_post.html', post=post, comments=comments)
 
-@app.route('/post/<post_id>/comment', methods=['GET', 'POST'])
+@app.route('/post/comment/<post_id>', methods=['GET', 'POST'])
 @login_required
 def comment(post_id):
     form = CommentForm()
