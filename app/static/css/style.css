@@ -230,8 +230,14 @@ USER
   border: 1px solid dimgrey;
   border-radius: 10px;
 }
+.profilepic .profile-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .profilepic img{
   border-radius: 100px;
+  width: 200px;
 }
 .followers{ width: 100% }
 .followers th{
