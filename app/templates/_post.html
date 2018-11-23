@@ -34,4 +34,31 @@
               <img src="{{ post.eventphoto }}" height="200px" width="200px">
             </td>
         </tr>
+        {% if form %}
+          <tr>
+            <h1>Leave a comment:</h1>
+
+            <form class="" action="index.html" method="post">
+              {{ form.hidden_tag () }}
+
+              {{ form.body.label }}
+              {{ form.body }}
+
+              {{ form.submit (class="button") }}
+            </form>
+          </tr>
+        {% endif %}
+
+        {% if comments %}
+          {% for comment in comments %}
+            <tr>
+              <a href="{{ url_for('user', username=comment.username) }}">
+                {{ comment.username }}
+              </a>
+              said {{ moment(comment.timestamp).fromNow() }}:
+              <br>
+              {{ comment.body }}
+            </tr>
+          {% endfor %}
+        {% endif %}
 </table>

@@ -98,6 +98,17 @@ class UserList(db.Model):
     def __repr__(self):
         return '<Userlist {}>'.format(self.id)
 
+class Comment(db.Model):
+    __tablename__="comments"
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    username = db.Column(db.String(20))
+    body = db.Column(db.String(300))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<Comment {}>'.format(self.id)
+
 class Post(db.Model):
     __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key=True)
@@ -110,6 +121,7 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     userlist = db.relationship('UserList', backref='event_interested', lazy='dynamic')
+    comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)

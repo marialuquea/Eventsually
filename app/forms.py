@@ -4,6 +4,10 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Le
 from app.models import User
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 
+class CommentForm(FlaskForm):
+    body = TextAreaField('Wanna say something?', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email',

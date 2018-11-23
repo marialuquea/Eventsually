@@ -2,8 +2,8 @@ from app import app
 from flask import render_template, flash, redirect, url_for, request, abort
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetP, ResetPasswordForm, PrivateMessages
-from app.models import User, Post, Message, Notification, UserList
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetP, ResetPasswordForm, PrivateMessages, CommentForm
+from app.models import User, Post, Message, Notification, UserList, Comment
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.email import send_password_reset_email
@@ -37,7 +37,7 @@ def interested(post_id, user_id):
         db.session.commit()
         flash('You are interested in this event')
         return redirect(url_for('explore'))
-        
+
 @app.route('/notinterested/<user_id>/<post_id>')
 @login_required
 def not_interested(post_id, user_id):
@@ -174,9 +174,28 @@ def delete_user(username):
     return redirect(url_for('login'))
 
 @app.route("/post/<int:post_id>")
+@login_required
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('_post.html', post=post)
+    comments = post.comments.order_by(Comment.timestamp.desc())
+    return render_template('_post.html', post=post, comments=comments)
+
+@app.route('/post/<post_id>/comment', methods=['GET', 'POST'])
+@login_required
+def comment(post_id):
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(
+            username = current_user.username,
+            body = form.body.data,
+            post = Post.query.get(post_id))
+        db.session.add(comment)
+        db.session.commit()
+        flash('Your comment has been posted :)')
+        return redirect(url_for('post', post_id=post_id))
+    else:
+        flash(form.errors)
+        return redirect(url_for('post', post_id=post_id))
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
