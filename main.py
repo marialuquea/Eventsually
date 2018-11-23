@@ -173,7 +173,7 @@ def delete_user(username):
     flash('Your user has been deleted!')
     return redirect(url_for('login'))
 
-@app.route("/post/<int:post_id>")
+@app.route("/post/<post_id>")
 @login_required
 def post(post_id):
     post = Post.query.get_or_404(post_id)
@@ -210,7 +210,11 @@ def update_post(post_id):
         flash('Your post has been updated!')
         return redirect(url_for('post', post_id=post.id))
     elif request.method == 'GET':
-        form.body.data = post.body
+        form.title.data = post.title
+        form.date.data = post.date
+        form.time.data = form.time
+        form.venue.data = form.venue
+        form.post.data = form.post
     return render_template('update_post.html', form=form, post=post)
 
 @app.route("/post/<int:post_id>/delete", methods=['GET', 'POST'])

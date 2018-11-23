@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+  {% if post %}
+    {% include '_post.html' %}
+  {% endif %}
+
+          {% if comments %}
+            {% for comment in comments %}
+              <hr>
+                <a href="{{ url_for('user', username=comment.username) }}">
+                  {{ comment.username }}
+                </a>
+                said {{ moment(comment.timestamp).fromNow() }}:
+                <br>
+                {{ comment.body }}
+            {% endfor %}
+          {% endif %}
+
+{% endblock %}

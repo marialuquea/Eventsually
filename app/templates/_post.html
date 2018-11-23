@@ -49,16 +49,4 @@
           </tr>
         {% endif %}
 
-        {% if comments %}
-          {% for comment in comments %}
-            <tr>
-              <a href="{{ url_for('user', username=comment.username) }}">
-                {{ comment.username }}
-              </a>
-              said {{ moment(comment.timestamp).fromNow() }}:
-              <br>
-              {{ comment.body }}
-            </tr>
-          {% endfor %}
-        {% endif %}
 </table>
