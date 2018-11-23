@@ -12,11 +12,11 @@
 
   <div class="profilepic">
     {% if image_file %}
-    <td><img src="{{ image_file }}"></td>
+    <td><img align="center" src="{{ image_file }}"></td>
     {% endif %}
-    <h1 class="event-name">{{ user.username }}</h1>
+    <h1 class="event-name" align="center">{{ user.username }}</h1>
     {% if user.about_me %}
-      <p>{{ user.about_me }}</p>
+      <p align="center">{{ user.about_me }}</p>
     {% endif %}
     {% if user.last_seen %}
     <p align="right">Last seen on: {{ moment(user.last_seen).calendar() }}</p>
@@ -47,7 +47,7 @@
     {% else %}
     <p><a class="link followers" href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
     {% endif %}
-    <br>
+    <br><br>
     {% if user != current_user %}
     <p><a class="link" href="{{ url_for('send_message', recipient=user.username) }}">{{ 'Send private message' }}</a></p>
     {% endif %}
