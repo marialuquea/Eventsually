@@ -154,7 +154,7 @@ NAVBAR
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  background: #5BC0DE;
+  background: #CF98C2;
   transition: ease .6s;
 }
 
@@ -184,16 +184,16 @@ NAVBAR
 }
 
 .button{
-  background-color: #5BC0DE;
+  background-color: #CF98C2;
   color: white;
   font-family: "Delius Unicase";
   border-radius: 12px;
-  border: 2px solid #5BC0DE;
+  border: 2px solid #CF98C2;
   padding: 10px 20px;
 }
 .button:hover{
   background-color: transparent;
-  color: #5BC0DE;
+  color: #CF98C2;
 }
 
 /*
