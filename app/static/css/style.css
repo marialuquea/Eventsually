@@ -23,6 +23,7 @@ LOGIN PAGE
   z-index: 1;
   font-family: "Cookie";
   font-size: 2rem;
+  color: dimgrey;
 }
 .section {
   position: relative;
@@ -46,6 +47,7 @@ LOGIN PAGE
 
 .login-link {
   z-index: 1;
+  color: dimgrey;
 }
 
 textarea{
@@ -72,6 +74,9 @@ textarea{
 .back-form{
   background-color: #CEEAF7;
   margin: 0;
+}
+.login-title{
+  color: dimgrey;
 }
 
 /*
