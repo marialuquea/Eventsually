@@ -1,4 +1,13 @@
 /*
+MAIN THINGS
+*/
+h1 {
+  font-family: 'Delius Unicase';
+  color: #CF98C2;
+}
+
+
+/*
 LOGIN PAGE
 */
 .form {
@@ -184,7 +193,15 @@ NAVBAR
 
 .event-month{
   color: #5BC0DE;
+  font-size: 61px;
+  font-family: 'Delius Unicase';
 }
 .event-day{
-  font-size: 20px;
+  font-size: 96px;
+  text-align: center;
+  font-family: 'Delius Unicase';
+}
+.fondo{
+  background-color: #CF98C2;
+  border-radius: 10px;
 }
