@@ -203,6 +203,6 @@ NAVBAR
   color: white;
 }
 .fondo{
-  background-color: #FDE7DC; /* BEIGE */
-  border-radius: 10px;
+  background-color: dimgrey;
+  border-radius: 4px;
 }
