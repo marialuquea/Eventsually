@@ -140,7 +140,7 @@ NAVBAR
 .postform {
   width: 60%;
   margin: 60px auto;
-  background: #CEEAF7;
+  background: #FAEAEA;
   padding: 60px 120px 80px 120px;
   text-align: center;
   -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
@@ -169,7 +169,7 @@ NAVBAR
   font-family: "Delius Unicase";
   font-size: 1.2em;
   letter-spacing: 1px;
-  color: #5BC0DE;
+  color: #CF98C2;
   transition: ease .3s;
 }
 
