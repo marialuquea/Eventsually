@@ -243,7 +243,8 @@ table .date {
 .post{
   border: 1px solid dimgrey;
   border-radius: 10px;
-  margin: 20px;
+  margin: auto;
+  width: 70%;
 }
 
 /*
