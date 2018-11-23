@@ -152,9 +152,11 @@ def user(username):
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
     postList = []
-    for relation in (UserList.query.filter_by(user_id=user.id)):
-        new_post = Post.query.get(relation.post_id)
-        postList.append(new_post)
+    relations = UserList.query.filter_by(user_id=user.id)
+    if relations is not None:
+        for relation in relations:
+            new_post = Post.query.get(relation.post_id)
+            postList.append(new_post)
     next_url = url_for('user', username=user.username, page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \

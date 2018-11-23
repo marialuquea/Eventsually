@@ -13,6 +13,14 @@ h3{ color: #CF98C2;}
 p{
   font-family: "Didact Gothic";
 }
+.flash{
+  width: 70%;
+  padding: 10px;
+  background-color: #CCDAC1; /* PALE GREEN*/
+  border: 1px solid #BAC3AE;
+  color: #BAC3AE;
+  border-radius: 4px;
+}
 
 /*
 LOGIN PAGE

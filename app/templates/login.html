@@ -7,6 +7,14 @@
 
 {% import 'bootstrap/wtf.html' as wtf %}
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
 {% block app_content %}
 
 <div class="section">

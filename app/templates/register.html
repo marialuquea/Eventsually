@@ -5,9 +5,17 @@
   <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
 </head>
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
 {% import 'bootstrap/wtf.html' as wtf %}
 
-    <h1>Register</h1>
+    <h1 class="event-name">Register</h1>
     <div>
       {%if form %}
         <form class="postform back-form" method="post" enctype="multipart/form-data">

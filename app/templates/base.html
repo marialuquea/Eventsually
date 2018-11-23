@@ -17,8 +17,7 @@
     <ul>
       <li><a href="{{ url_for('explore') }}">Discover Events</a></li>
       <li><a href="{{ url_for('index') }}">Post Event</a></li>
-      <li><a href="{{ url_for('messages') }}">
-          {{ 'Messages' }}
+      <li><a href="{{ url_for('messages') }}">Messages
           {% set new_messages = current_user.new_messages() %}
           {% if new_messages %}
             <span>{{ new_messages }}</span>
@@ -36,7 +35,7 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div>{{ message }}</div>
+            <div class="flash">{{ message }}</div>
             {% endfor %}
         {% endif %}
         {% endwith %}
