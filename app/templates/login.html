@@ -5,14 +5,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
 </head>
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-    {% for message in messages %}
-    <div class="flash">{{ message }}</div>
-    {% endfor %}
-{% endif %}
-{% endwith %}
-
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
