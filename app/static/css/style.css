@@ -205,5 +205,7 @@ NAVBAR
 .fondo{
   background-color: dimgrey;
   border-radius: 4px;
+}
+table .date {
   padding: 0 30px;
 }
