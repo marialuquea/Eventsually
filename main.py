@@ -198,6 +198,7 @@ def comment(post_id):
         return redirect(url_for('post', post_id=post_id))
     else:
         print('did not work')
+        print (form.errors)
         return redirect(url_for('post', post_id=post_id))
     return render_template('_post.html', form=form, post=post, comments=comments)
 

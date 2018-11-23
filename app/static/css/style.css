@@ -62,7 +62,7 @@ NAVBAR
 */
 .nav{
   height: 70px;
-  background: #BFD8D2;
+  background-mage: url("../images/navbar.png");
 }
 .nav ul{
   margin: 0;
