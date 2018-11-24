@@ -249,9 +249,11 @@ NAVBAR
   margin: 5px;
 }
 .event-photo{
+  align: right;
+}
+.event-photo img{
   height: 200px;
   width: 200px;
-  align: right;
   border-radius: 10px;
 }
 .event-info{
