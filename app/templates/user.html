@@ -55,11 +55,13 @@
 </div>
 
 <h1 class="user-events">{{ user.username }}'s events:</h1>
+<hr class="separator">
 {% for post in posts %}
     {% include '_post.html' %}
 {% endfor %}
 
 <h1 class="user-events">Events {{ user.username }} will be attending:</h1>
+<hr class="separator">
 {% for post in postList %}
 {% include '_post.html' %}
 {% endfor %}
