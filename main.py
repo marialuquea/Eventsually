@@ -85,7 +85,6 @@ def index():
         eventphoto = request.files['eventphoto']
         photoname = form.title.data + '.png'
         eventphoto.save(os.path.join(app.root_path, 'static/event_pics/', photoname))
-        print ('hello')
         post = Post(
             title=form.title.data,
             eventphoto=url_for('static', filename='event_pics/' + photoname),
