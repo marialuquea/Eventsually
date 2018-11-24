@@ -272,9 +272,8 @@ table .date {
 .post{
   border: 1px solid dimgrey;
   border-radius: 10px;
-  margin: auto;
   width: 80%;
-  margin-top: 20px;
+  margin: 20px auto;
 }
 
 /*
@@ -326,4 +325,10 @@ USER
   font-weight: bold;
   padding: 5px 15px;
   border-radius: 18px;
+}
+.user-events{
+  font-family: 'Delius Unicase';
+  color: #F8BAAD; /* PASTLE */
+  font-size: 40px;
+  padding-left: 7%;
 }
