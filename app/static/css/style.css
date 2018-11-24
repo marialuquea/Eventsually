@@ -23,7 +23,8 @@ p{
   margin: 20px auto;
 }
 .separator {
-  border-top: 1px solid #C581CC;
+  border-top: 1px dashed #C581CC;
+  width: 90%;
 }
 
 /*
