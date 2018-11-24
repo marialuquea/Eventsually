@@ -52,10 +52,13 @@ def not_interested(post_id, user_id):
 def edit_profile():
     form = EditProfileForm(current_user.username, current_user.email)
     if form.validate_on_submit():
-        file = request.files['profilepic']
-        filename = form.username.data + '.png'
-        file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
-        current_user.profilepic = url_for('static', filename='profile_pics/' + filename)
+        try:
+            file = request.files['profilepic']
+            filename = form.username.data + '.png'
+            file.save(os.path.join(app.root_path, 'static/profile_pics', filename))
+            current_user.profilepic = url_for('static', filename='profile_pics/' + filename)
+        except:
+            pass
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         current_user.email = form.email.data
