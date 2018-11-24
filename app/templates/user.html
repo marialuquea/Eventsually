@@ -16,7 +16,7 @@
     {% endif %}
     <h1 class="event-name" align="center">{{ user.username }}</h1>
     {% if user.about_me %}
-      <p align="center">{{ user.about_me }}</p>
+    <p align="center">{{ user.about_me }}</p>
     {% endif %}
     {% if user.last_seen %}
     <p align="right">Last seen: {{ moment(user.last_seen).calendar() }}</p>
@@ -55,11 +55,11 @@
     {% endif %}
   </div>
 </div>
-
+</div>
 <h1 class="user-events">{{ user.username }}'s events:</h1>
 <hr class="separator">
 {% for post in posts %}
-    {% include '_post.html' %}
+  {% include '_post.html' %}
 {% endfor %}
 
 <h1 class="user-events">Events {{ user.username }} will be attending:</h1>
