@@ -49,7 +49,7 @@
     {% endif %}
     <br><br>
     {% if user != current_user %}
-    <p><a class="link" href="{{ url_for('send_message', recipient=user.username) }}">Send message</a></p>
+    <p><a class="link" href="{{ url_for('send_message', recipient=user.username) }}">Message</a></p>
     {% endif %}
   </div>
 </div>
