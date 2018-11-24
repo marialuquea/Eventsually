@@ -54,14 +54,13 @@
   </div>
 </div>
 
-<h1 class="event-name">{{ user.username }}'s events</h1>
+<h1 class="event-name">{{ user.username }}'s events:</h1>
 <hr class="separator">
 {% for post in posts %}
     {% include '_post.html' %}
 {% endfor %}
 
 <h1 class="event-name">Events {{ user.username }} will be attending:</h1>
-<p class="link" padding-left="20px">(and getting super drunk at)</p>
 <hr class="separator">
 {% for post in postList %}
 {% include '_post.html' %}
