@@ -192,6 +192,11 @@ def post(post_id):
 def comment(post_id):
     post = Post.query.get(post_id)
     form = CommentForm()
+    comments = []
+    try:
+        comments = Comment.query.all()
+    except:
+        pass
     if form.validate_on_submit():
         comment = Comment(
             username = current_user.username,
@@ -200,11 +205,9 @@ def comment(post_id):
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been posted :)')
-        return render_template('showEvent.html', form=form, post=post)
+        return render_template('showEvent.html', form=form, post=post, comments=comments)
     else:
-        print('did not work')
-        print (form.errors)
-        return render_template('showEvent.html', form=form, post=post)
+        return render_template('showEvent.html', form=form, post=post, comments=comments)
 
 @app.route('/post/<post_id>/delete_comment/<comment_id>', methods=['GET', 'POST'])
 @login_required

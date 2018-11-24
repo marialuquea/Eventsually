@@ -34,7 +34,6 @@
 
 {% if comments %}
   {% for c in comments %}
-
   <div class="event-description" width="70%">
     <p>
       <a class="link" href="{{ url_for('user', username=c.username) }}">{{ c.username }}</a>
