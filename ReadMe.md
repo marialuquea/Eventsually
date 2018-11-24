@@ -30,11 +30,11 @@ $ pip install PyJWT
 
 $ pip install Pillow
 
-export FLASK_ENV=development
+$ export FLASK_ENV=development
 
-export FLASK_APP=main.py
+$ export FLASK_APP=main.py
 
-python -m flask run --host-0.0.0.0 --port 9151
+$ python -m flask run --host-0.0.0.0 --port 9151
 ```
 
 Go in web browser to:
