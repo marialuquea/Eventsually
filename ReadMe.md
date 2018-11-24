@@ -42,7 +42,21 @@ Go in web browser to:
 set09103.napier.ac.uk:9151
 ---------------------------------
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshots/loginpage.jpg)
+
+![Screenshot](screenshots/discover.png)
+
+![Screenshot](screenshots/postevent.png)
+
+![Screenshot](screenshots/event.png)
+
+![Screenshot](screenshots/user.png)
+
+![Screenshot](screenshots/userevents.png)
+
+![Screenshot](screenshots/messages.png)
+
+![Screenshot](screenshots/resetp.png)
 
 Maria Luque Anguita
 
