@@ -8,11 +8,9 @@
 
 1. ``` $ cd ``` to the project folder
 
-To run it:
-
+In PuTTY:
+```
 $ pip install flask
-
-$ pip install flask-wtf
 
 $ pip install flask-sqlalchemy
 
@@ -20,15 +18,28 @@ $ pip install flask-migrate
 
 $ pip install flask-login
 
+$ pip install flask-wtf
+
 $ pip install flask-mail
 
 $ pip install flask-moment
 
-export FLASK_APP=main.py
+$ pip install flask_bootstrap
+
+$ pip install PyJWT
+
+$ pip install Pillow
 
 export FLASK_ENV=development
 
-python -m flask run --host-0.0.0.0 --port 9151
+export FLASK_APP=main.py
 
+python -m flask run --host-0.0.0.0 --port 9151
+```
+
+Go in web browser to:
+
+set09103.napier.ac.uk:9151
 ---------------------------------
 Maria Luque Anguita
+40280156
