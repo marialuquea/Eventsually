@@ -194,7 +194,7 @@ def comment(post_id):
     form = CommentForm()
     comments = []
     try:
-        comments = Comment.query.all()
+        comments = post.comments.order_by(Comment.timestamp.desc())
     except:
         pass
     if form.validate_on_submit():
