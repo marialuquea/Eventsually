@@ -15,7 +15,8 @@
           said {{ moment(message.timestamp).fromNow() }}:
         </p>
         <p>{{ message.body }}</p>
-        <a href="{{ url_for('send_message', recipient=message.author.username) }}">Reply</a>
+        <a class="link" href="{{ url_for('send_message', recipient=message.author.username) }}">Reply</a>
+        <br>
         <a class="link" href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
       </div>
     {% endfor %}
