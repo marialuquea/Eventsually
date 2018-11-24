@@ -31,7 +31,9 @@
           {{ post.date.strftime("%a, %b %d %Y") }}
           at {{ post.time.strftime("%H:%M") }}
           <br>
-          <img src="../static/images/location.png" height="20px">
+          <div class="location">
+
+          </div>
           {{ post.venue }}
         </div>
         {% if post.author.username == current_user.username %}
