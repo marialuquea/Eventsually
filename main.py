@@ -179,32 +179,21 @@ def delete_user(username):
 @login_required
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    # comments = post.comments.order_by(Comment.timestamp.desc())
-    comments = []
-    comment = Comment(
-        username = 'maria',
-        body = 'hello this is a comment',
-        post = Post.query.get(post_id))
-    comments.append(comment)
+    comments = post.comments.order_by(Comment.timestamp.desc())
     return render_template('showEvent.html', post=post, comments=comments)
 
 @app.route('/post/comment/<post_id>', methods=['GET', 'POST'])
 @login_required
 def comment(post_id):
-    print(post_id)
     post = Post.query.get(post_id)
-    print(post)
     form = CommentForm()
-    print('1')
     if form.validate_on_submit():
-        print('2')
         comment = Comment(
             username = current_user.username,
             body = form.body.data,
             post = post)
         db.session.add(comment)
         db.session.commit()
-        print('3')
         flash('Your comment has been posted :)')
         return render_template('showEvent.html', form=form, post=post)
     else:

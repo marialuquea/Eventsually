@@ -14,8 +14,7 @@
 {% endif %}
 
 {% if form %}
-<h1>Leave a comment:</h1>
-
+<h1 class="event-name">Leave a comment:</h1>
 <form class="postform back-form" action="" method="post">
   {{ form.hidden_tag () }}
   {{ form.csrf_token }}
@@ -31,16 +30,21 @@
     {{ form.submit (class="button") }}
   </label>
 </form>
-{% else %}
-<h1 class="event-name">No form</h1>
 {% endif %}
-
-
 
 {% if comments %}
   {% for c in comments %}
-  <p>Sender: {{ c.username }}</p>
-  <p>Body: {{ c.body }}</p>
+
+  <div class="event-description" width="70%">
+    <p>
+      <a class="link" href="{{ url_for('user', username=c.username) }}">{{ c.username }}</a>
+      said {{ moment(c.timestamp).fromNow() }}:
+    </p>
+    <p>{{ c.body }}</p>
+    {% if ((current_user.username == c.username) or (current_user.id == post.author.id))  %}
+        <a class="link" href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
+    {% endif %}
+  </div>
   {% endfor %}
 {% endif %}
 
