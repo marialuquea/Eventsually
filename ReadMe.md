@@ -41,5 +41,9 @@ Go in web browser to:
 
 set09103.napier.ac.uk:9151
 ---------------------------------
+
+![Screenshot](screenshot.png)
+
 Maria Luque Anguita
+
 40280156
