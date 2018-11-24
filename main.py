@@ -156,8 +156,9 @@ def user(username):
     relations = UserList.query.filter_by(user_id=user.id)
     if relations is not None:
         for relation in relations:
-            new_post = Post.query.get(relation.post_id)
-            postList.append(new_post)
+            if post_id is not None:
+                new_post = Post.query.get(relation.post_id)
+                postList.append(new_post)
     next_url = url_for('user', username=user.username, page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
