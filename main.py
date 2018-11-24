@@ -110,7 +110,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('explore'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -132,7 +132,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('explore'))
     form = RegistrationForm()
     if form.validate_on_submit():
         file = request.files['profilepic']
@@ -310,7 +310,7 @@ def explore():
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('explore'))
     form = ResetP()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -323,7 +323,7 @@ def reset_password_request():
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('explore'))
     user = User.verify_reset_password_token(token)
     if not user:
         return redirect(url_for('index'))
