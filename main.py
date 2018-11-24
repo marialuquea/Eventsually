@@ -182,7 +182,7 @@ def post(post_id):
     comments = post.comments.order_by(Comment.timestamp.desc())
     return render_template('showEvent.html', post=post, comments=comments)
 
-@app.route('/post/comment/<post_id>', methods=['GET', 'POST'])
+@app.route('/post/<post_id>/comment', methods=['GET', 'POST'])
 @login_required
 def comment(post_id):
     post = Post.query.get(post_id)
@@ -200,6 +200,21 @@ def comment(post_id):
         print('did not work')
         print (form.errors)
         return render_template('showEvent.html', form=form, post=post)
+
+@app.route('/post/<post_id>/delete_comment/<comment_id>', methods=['GET', 'POST'])
+@login_required
+def delete_comment(post_id, comment_id):
+    post = Post.query.get_or_404(post_id)
+    comment = Comment.query.get_or_404(comment_id)
+    if (comment.username != current_user.username) or (post.author != current_user):
+        flash("You can't delete the message if it's not yours or you don't own the event!")
+        abort(403)
+    else:
+        db.session.delete(comment)
+        db.session.commit()
+        flash('You comment has been deleted.')
+        return redirect(url_for('post', post_id=post_id))
+
 
 @app.route("/post/<post_id>/update", methods=['GET', 'POST'])
 @login_required

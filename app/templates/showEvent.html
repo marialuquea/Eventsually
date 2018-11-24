@@ -42,7 +42,7 @@
     </p>
     <p>{{ c.body }}</p>
     {% if ((current_user.username == c.username) or (current_user.id == post.author.id))  %}
-        <a class="link" href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
+        <a class="link" href="{{ url_for('delete_comment', post_id=post.id, comment_id=c.id) }}">Delete message</a>
     {% endif %}
   </div>
   {% endfor %}
