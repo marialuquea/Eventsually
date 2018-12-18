@@ -1,8 +1,8 @@
 # Advanced Web Tech (set09103)
 
-## Coursework 2
+## Coursework 2 - Edinburgh Napier University
 
-### Eventsually, a flask app used to find events near you and post your own
+Eventsually, a flask app used to find events near you and post your own
 
 #### To run the program:
 
