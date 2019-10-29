@@ -1,4 +1,4 @@
-# Advanced Web Tech (set09103)
+# Advanced Web Tech (set09103) :)
 
 ## Coursework 2 - Edinburgh Napier University
 
