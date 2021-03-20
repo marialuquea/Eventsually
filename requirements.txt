@@ -24,7 +24,7 @@ funcsigs==1.0.2
 futures==3.2.0
 iotop==0.6
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 jmespath==0.9.3
 Mako==1.0.7
 MarkupSafe==1.0
